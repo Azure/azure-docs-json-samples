@@ -1,0 +1,12 @@
+[
+    {
+        "id": "'"$RANDOM"'",
+        "eventType": "recordInserted",
+        "subject": "myapp/vehicles/motorcycles",
+        "eventTime": "'`date --iso-8601=seconds`'",
+        "data":{
+            "make": "Ducati",
+            "model": "Monster"
+        }
+    }
+]

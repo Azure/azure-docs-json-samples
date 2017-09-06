@@ -24,7 +24,7 @@
   "outputs": {
       "referenceOutput": {
           "type": "object",
-          "value": "[listKeys(parameters('storageAccountName'))]"
+          "value": "[listKeys(parameters('storageAccountName'), '2016-12-01')]"
       }
     }
 }

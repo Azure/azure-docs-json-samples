@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
-        "subscriptionOutput": {
+        "resourceGroupOutput": {
             "value": "[resourceGroup()]",
             "type" : "object"
         }

@@ -348,7 +348,7 @@
                     "storageAccountName": "[variables('applicationDiagnosticsStorageAccountName')]",
                     "storageAccountKey": "[listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('applicationDiagnosticsStorageAccountName')), '2016-01-01').keys[0].value]"
                   },
-                  "publisher": "AIP.Diagnostics.Test",
+                  "publisher": "Microsoft.Azure.Diagnostics",
                   "settings": {
                     "WadCfg": {
                       "SinksConfig": {
@@ -394,7 +394,7 @@
                       }
                     }
                   },
-                  "typeHandlerVersion": "0.0"
+                  "typeHandlerVersion": "1.11"
                 }
               }
             ]

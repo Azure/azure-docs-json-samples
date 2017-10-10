@@ -202,9 +202,9 @@
             "[resourceId('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
           ],
           "properties": {
-            "publisher": "AIP.Diagnostics.Test",
+            "publisher": "Microsoft.Azure.Diagnostics",
             "type": "IaaSDiagnostics",
-            "typeHandlerVersion": "0.0",
+            "typeHandlerVersion": "1.11",
             "autoUpgradeMinorVersion": true,
             "settings": {
               "WadCfg": {

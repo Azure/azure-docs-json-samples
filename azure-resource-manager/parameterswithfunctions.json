@@ -1,0 +1,31 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "siteName": {
+            "type": "string",
+            "defaultValue": "[concat('site', uniqueString(resourceGroup().id))]",
+            "metadata": {
+                "description": "The site name. To use the default value, do not specify a new value."
+            }
+        },
+        "hostingPlanName": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('siteName'),'-plan')]",
+            "metadata": {
+                "description": "The host name. To use the default value, do not specify a new value."
+            }
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "siteNameOutput": {
+            "type": "string",
+            "value": "[parameters('siteName')]"
+        },
+        "hostingPlanOutput": {
+            "type": "string",
+            "value": "[parameters('hostingPlanName')]"
+        }
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vNetSettings": {
+            "type": "object",
+            "defaultValue": {
+                "name": "VNet1",
+                "addressPrefixes": [
+                    {
+                        "name": "firstPrefix",
+                        "addressPrefix": "10.0.0.0/22"
+                    }
+                ],
+                "subnets": [
+                    {
+                        "name": "firstSubnet",
+                        "addressPrefix": "10.0.0.0/24"
+                    },
+                    {
+                        "name": "secondSubnet",
+                        "addressPrefix": "10.0.1.0/24"
+                    }
+                ]
+            }
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "name": {
+            "type": "string",
+            "value": "[parameters('vNetSettings').name]"
+        },
+        "addressPrefix": {
+            "type": "string",
+            "value": "[parameters('vNetSettings').addressPrefixes[0].addressPrefix]"
+        },
+        "subnet1": {
+            "type": "string",
+            "value": "[parameters('vNetSettings').subnets[0].addressPrefix]"
+        },
+        "subnet2": {
+            "type": "string",
+            "value": "[parameters('vNetSettings').subnets[1].addressPrefix]"
+        }
+    }
+}

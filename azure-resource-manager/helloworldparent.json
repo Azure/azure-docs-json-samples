@@ -1,8 +1,8 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": { },
-    "variables": { },
+    "parameters": {},
+    "variables": {},
     "resources": [
         {
             "apiVersion": "2017-05-10",
@@ -12,17 +12,15 @@
                 "mode": "incremental",
                 "templateLink": {
                     "uri": "[uri(deployment().properties.templateLink.uri, 'helloworld.json')]",
-                  "contentVersion": "1.0.0.0"
+                    "contentVersion": "1.0.0.0"
                 }
-
             }
         }
     ],
     "outputs": {
-        "result": {
+        "messageFromLinkedTemplate": {
             "type": "string",
             "value": "[reference('linkedTemplate').outputs.greetingMessage.value]"
         }
     }
 }
-

@@ -1,0 +1,60 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "loadBalancers_name": {
+            "defaultValue": "mylb",
+            "type": "string"
+        },
+        "publicIPAddresses_name": {
+            "defaultValue": "myip",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/loadBalancers",
+            "name": "[parameters('loadBalancers_name')]",
+            "apiVersion": "2017-06-01",
+            "location": "eastus",
+            "properties": {
+                "frontendIPConfigurations": [
+                    {
+                        "name": "LoadBalancerFrontEnd",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[reference('linkedTemplate').outputs.resourceID.value]"
+                            }
+                        }
+                    }
+                ],
+                "backendAddressPools": [],
+                "loadBalancingRules": [],
+                "probes": [],
+                "inboundNatRules": [],
+                "outboundNatRules": [],
+                "inboundNatPools": []
+            },
+            "dependsOn": [
+                "linkedTemplate"
+            ]
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+              "mode": "Incremental",
+              "templateLink": {
+                "uri": "[uri(deployment().properties.templateLink.uri, 'public-ip.json')]",
+                "contentVersion": "1.0.0.0"
+              },
+              "parameters":{
+                  "publicIPAddresses_name":{"value": "[parameters('publicIPAddresses_name')]"}
+              }
+            }
+          }
+    ]
+}

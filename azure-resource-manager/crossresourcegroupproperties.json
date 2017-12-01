@@ -1,0 +1,60 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [
+        {
+            "apiVersion": "2017-05-10",
+            "name": "nestedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "resourceGroup": "inlineGroup",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                    ],
+                    "outputs": {
+                        "resourceGroupOutput": {
+                            "type": "object",
+                            "value": "[resourceGroup()]"
+                        }
+                    }
+                },
+                "parameters": {}
+            }
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "resourceGroup": "linkedGroup",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "contentVersion": "1.0.0.0",
+                    "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json"
+                },
+                "parameters": {}
+            }
+        }
+    ],
+    "outputs": {
+        "parentRG": {
+            "type": "object",
+            "value": "[resourceGroup()]"
+        },
+        "inlineRG": {
+            "type": "object",
+            "value": "[reference('nestedTemplate').outputs.resourceGroupOutput.value]"
+        },
+        "linkedRG": {
+            "type": "object",
+            "value": "[reference('linkedTemplate').outputs.resourceGroupOutput.value]"
+        }
+    }
+}

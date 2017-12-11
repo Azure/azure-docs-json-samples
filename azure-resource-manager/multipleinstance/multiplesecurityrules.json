@@ -1,0 +1,43 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "securityRules": {
+            "type": "array"
+        }
+    },
+    "variables": {
+        "copy": [
+            {
+                "name": "securityRules",
+                "count": "[length(parameters('securityRules'))]",
+                "input": {
+                    "name": "[parameters('securityRules')[copyIndex('securityRules')].name]",
+                    "properties": {
+                        "description": "[parameters('securityRules')[copyIndex('securityRules')].description]",
+                        "priority": "[parameters('securityRules')[copyIndex('securityRules')].priority]",
+                        "protocol": "[parameters('securityRules')[copyIndex('securityRules')].protocol]",
+                        "sourcePortRange": "[parameters('securityRules')[copyIndex('securityRules')].sourcePortRange]",
+                        "destinationPortRange": "[parameters('securityRules')[copyIndex('securityRules')].destinationPortRange]",
+                        "sourceAddressPrefix": "[parameters('securityRules')[copyIndex('securityRules')].sourceAddressPrefix]",
+                        "destinationAddressPrefix": "[parameters('securityRules')[copyIndex('securityRules')].destinationAddressPrefix]",
+                        "access": "[parameters('securityRules')[copyIndex('securityRules')].access]",
+                        "direction": "[parameters('securityRules')[copyIndex('securityRules')].direction]"
+                    }
+                }
+            }
+        ]
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-06-15",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "NSG1",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "securityRules": "[variables('securityRules')]"
+            }
+        }
+    ],
+    "outputs": {}
+}

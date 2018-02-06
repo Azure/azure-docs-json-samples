@@ -32,6 +32,10 @@
                 {
                   "name": "gitrepo1",
                   "mountPath": "/mnt/repo1"
+                },
+                {
+                  "name": "gitrepo2",
+                  "mountPath": "/mnt/repo2"
                 }
               ]
             }
@@ -52,6 +56,14 @@
             "name": "gitrepo1",
             "gitRepo": {
               "repository": "https://github.com/Azure-Samples/aci-helloworld"
+            }
+          },
+          {
+            "name": "gitrepo2",
+            "gitRepo": {
+              "directory": "my-custom-clone-directory",
+              "repository": "https://github.com/Azure-Samples/aci-helloworld",
+              "revision": "d5ccfcedc0d81f7ca5e3dbe6e5a7705b579101f1"
             }
           }
         ]

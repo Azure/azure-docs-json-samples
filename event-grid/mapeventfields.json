@@ -1,6 +1,7 @@
 [
   {
     "myEventTypeField":"Created",
+    "myTopicField": "my application topic",
     "resource":"Users/example/Messages/1000",
     "resourceData":{"someDataField1":"SomeDataFieldValue"}
   }

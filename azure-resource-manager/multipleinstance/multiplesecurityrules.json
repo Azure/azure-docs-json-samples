@@ -3,7 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "securityRules": {
-            "type": "array"
+            "type": "array",
+            "metadata": {
+                "description": "An array that contains objects with properties for the security rules. For format, see multiplesecurityrules.parameters.json."
+            }
         }
     },
     "variables": {

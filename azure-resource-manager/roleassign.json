@@ -7,16 +7,13 @@
         },
         "roleDefinitionId": {
             "type": "string"
-        },
-        "roleAssignmentName": {
-            "type": "string"
         }
     },
     "variables": {},
     "resources": [
         {
             "type": "Microsoft.Authorization/roleAssignments",
-            "name": "[parameters('roleAssignmentName')]",
+            "name": "[guid(parameters('principalId'), deployment().name)]",
             "apiVersion": "2017-05-01",
             "properties": {
                 "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",

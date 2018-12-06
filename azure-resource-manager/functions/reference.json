@@ -2,6 +2,9 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "storageResourceGroup": {
+            "type": "string"
+        },
         "storageAccountName": {
             "type": "string"
         }
@@ -9,8 +12,8 @@
     "resources": [],
     "outputs": {
         "ExistingStorage": {
-            "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01')]",
-            "type" : "object"
+            "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]",
+            "type": "object"
         }
     }
 }

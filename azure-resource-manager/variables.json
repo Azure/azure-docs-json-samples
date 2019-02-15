@@ -25,6 +25,11 @@
                         "diskSizeGB": "1",
                         "diskIndex": "[copyIndex('disks')]"
                     }
+                },
+                {
+                    "name": "diskNames",
+                    "count": 5,
+                    "input": "[concat('myDataDisk', copyIndex('diskNames', 1))]"
                 }
             ]
         },
@@ -46,6 +51,16 @@
                     "diskSizeGB": "1",
                     "diskIndex": "[copyIndex('var7')]"
                 }
+            },
+            {
+                "name": "var8",
+                "count": 4,
+                "input": "[concat('stringValue', copyIndex('var8'))]"
+            },
+            {
+                "name": "var9",
+                "count": 4,
+                "input": "[copyIndex('var9')]"
             }
         ]
     },
@@ -78,6 +93,14 @@
         "exampleOutput7": {
             "type": "array",
             "value": "[variables('var7')]"
+        },
+        "exampleOutput8": {
+            "type": "array",
+            "value": "[variables('var8')]"
+        },
+        "exampleOutput9": {
+            "type": "array",
+            "value": "[variables('var9')]"
         }
     }
 }

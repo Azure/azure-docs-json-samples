@@ -1,23 +1,34 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "funcName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "[uniqueString(resourceGroup().id)]",
+            "metadata": {
+                "description": "The unique name of the function application"
+            }
         },
         "storageName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "[concat('store', uniquestring(resourceGroup().id))]",
+            "metadata": {
+                "description": "The unique name of the storage account."
+            }
         },
         "location": {
             "type": "string",
-            "defaultValue": "eastus"
+            "defaultValue": "eastus",
+            "metadata": {
+                "description": "The location for the resources."
+            }
         },
         "zipFileBlobUri": {
             "type": "string",
+            "defaultValue": "https://github.com/Azure/azure-docs-json-samples/blob/master/custom-providers/_artifacts/functionpackage.zip?raw=true",
             "metadata": {
-                "description": "The Uri to the uploaded function zip file"
-            },
-            "defaultValue": "https://github.com/raosuhas/managedapps-intro/blob/master/CustomRPWithFunction/Artifacts/functionpackage.zip?raw=true"
+                "description": "The URI to the uploaded function zip file"
+            }
         }
     },
     "resources": [
@@ -26,6 +37,10 @@
             "type": "Microsoft.Web/sites",
             "name": "[parameters('funcName')]",
             "location": "[parameters('location')]",
+            "kind": "functionapp",
+            "identity": {
+                "type": "SystemAssigned"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageName'))]"
             ],
@@ -35,11 +50,11 @@
                     "appSettings": [
                         {
                             "name": "AzureWebJobsDashboard",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageName')), '2015-05-01-preview').key1)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageName')), '2019-04-01').key1)]"
                         },
                         {
                             "name": "AzureWebJobsStorage",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageName')), '2015-05-01-preview').key1)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageName')), '2019-04-01').key1)]"
                         },
                         {
                             "name": "FUNCTIONS_EXTENSION_VERSION",
@@ -47,11 +62,11 @@
                         },
                         {
                             "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageName')), '2015-05-01-preview').key1)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageName')), '2019-04-01').key1)]"
                         },
                         {
                             "name": "WEBSITE_CONTENTSHARE",
-                            "value": "[concat(toLower(parameters('funcName')), 'b86e')]"
+                            "value": "[toLower(parameters('funcName'))]"
                         },
                         {
                             "name": "WEBSITE_NODE_DEFAULT_VERSION",
@@ -65,14 +80,10 @@
                 },
                 "clientAffinityEnabled": false,
                 "reserved": false
-            },
-            "kind": "functionapp",
-            "identity": {
-                "type": "SystemAssigned"
             }
         },
         {
-            "apiVersion": "2018-02-01",
+            "apiVersion": "2019-04-01",
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[parameters('storageName')]",
             "location": "[parameters('location')]",
@@ -117,7 +128,7 @@
             "properties": {
                 "FullName": "Santa Claus",
                 "Location": "NorthPole"
-            }   
+            }
         }
     ],
     "outputs": {

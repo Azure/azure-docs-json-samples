@@ -1,0 +1,1 @@
+This template is the completed template for the use conditions tutorial: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-tutorial-use-conditions.

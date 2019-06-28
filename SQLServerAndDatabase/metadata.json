@@ -1,9 +1,9 @@
 {
   "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
   "type": "QuickStart",
-  "itemDisplayName": "Azure SQL Server with Threat Detection (+ optional SQL DB)",
-  "description": "This template allows you to deploy an Azure SQL server with Threat Detection enabled and an optional Azure SQL database.",
-  "summary": "Deploy an Azure SQL Server with Threat Detection enabled and an optional SQL database.",
-  "githubUsername": "guywald1",
-  "dateUpdated": "2018-12-04"
+  "itemDisplayName": "Deploy an Azure SQL Server and a SQL database.",
+  "description": "This template allows you to deploy an Azure SQL server and an Azure SQL database.",
+  "summary": "Deploy an Azure SQL Server and an SQL database.",
+  "githubUsername": "mumian",
+  "dateUpdated": "2019-06-28"
 }

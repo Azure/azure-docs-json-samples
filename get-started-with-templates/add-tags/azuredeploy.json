@@ -71,10 +71,10 @@
       "location": "[parameters('location')]",
       "tags": "[parameters('resourceTags')]",
       "sku": {
-        "name": "P1v2",
-        "tier": "PremiumV2",
-        "size": "P1v2",
-        "family": "Pv2",
+        "name": "B1",
+        "tier": "Basic",
+        "size": "B1",
+        "family": "B",
         "capacity": 1
       },
       "kind": "linux",

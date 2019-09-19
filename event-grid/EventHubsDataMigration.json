@@ -116,12 +116,14 @@
                 {
                     "name": "[parameters('sqlServerDatabaseName')]",
                     "type": "databases",
-                    "apiVersion": "2015-05-01-preview",
+                    "apiVersion": "2017-10-01-preview",
                     "location": "[resourceGroup().location]",
+                    "sku": {
+                        "name": "DW100c",
+                        "tier": "DataWarehouse"
+                    },                    
                     "properties": {
-                        "edition": "DataWarehouse",
-                        "collation": "SQL_Latin1_General_CP1_CI_AS",
-                        "serviceLevelObjective": "DW100"
+                        "collation": "SQL_Latin1_General_CP1_CI_AS"
                     },
                     "dependsOn": [
                         "[resourceId('Microsoft.Sql/servers', parameters('sqlServerName'))]"

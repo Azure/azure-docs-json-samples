@@ -4,6 +4,7 @@
     "parameters": {
         "storageName": {
             "type": "string",
+            "minLength": 8,
             "maxLength": 24
         },
         "storageSKU": {

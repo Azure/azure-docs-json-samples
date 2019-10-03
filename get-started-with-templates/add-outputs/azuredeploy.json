@@ -4,7 +4,7 @@
     "parameters": {
         "storagePrefix": {
             "type": "string",
-            "minLength": 8,
+            "minLength": 3,
             "maxLength": 11
         },
         "storageSKU": {
@@ -12,8 +12,13 @@
             "defaultValue": "Standard_LRS",
             "allowedValues": [
                 "Standard_LRS",
+                "Standard_GRS",
+                "Standard_RAGRS",
                 "Standard_ZRS",
-                "Standard_GRS"
+                "Premium_LRS",
+                "Premium_ZRS",
+                "Standard_GZRS",
+                "Standard_RAGZRS"
             ]
         },
         "location": {

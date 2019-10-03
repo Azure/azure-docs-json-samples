@@ -4,6 +4,7 @@
   "parameters": {
     "storagePrefix": {
       "type": "string",
+      "minLength": 8,
       "maxLength": 11
     },
     "storageSKU": {

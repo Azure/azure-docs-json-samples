@@ -41,7 +41,7 @@
   },
   "variables": {
     "uniqueStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]",
-    "webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"
+    "webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"
   },
   "resources": [
     {
@@ -59,39 +59,32 @@
     },
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2016-09-01",
-      "name": "[parameters('appServicePlanName')]",
+      "apiVersion": "2018-02-01",
+      "name": "[variables('appServicePlanName')]",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "B1",
-        "tier": "Basic",
-        "size": "B1",
-        "family": "B",
-        "capacity": 1
+        "name": "[parameters('sku')]"
       },
       "kind": "linux",
-      "properties": {
-        "perSiteScaling": false,
-        "reserved": true,
-        "targetWorkerCount": 0,
-        "targetWorkerSizeId": 0
+      "properties":{
+        "reserved":true
       }
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2016-08-01",
-      "kind": "app",
+      "apiVersion": "2018-11-01",
       "name": "[variables('webAppPortalName')]",
       "location": "[parameters('location')]",
-      "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
-        "siteConfig": {
-          "linuxFxVersion": "[parameters('linuxFxVersion')]"
-        }
-      },
+      "kind": "app",
       "dependsOn": [
-        "[parameters('appServicePlanName')]"
-      ]
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+      ],
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "siteConfig": {
+            "linuxFxVersion": "[parameters('linuxFxVersion')]"
+          }
+      }
     }
   ],
   "outputs": {

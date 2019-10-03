@@ -59,15 +59,22 @@
     },
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2018-02-01",
-      "name": "[variables('appServicePlanName')]",
+      "apiVersion": "2016-09-01",
+      "name": "[parameters('appServicePlanName')]",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "[parameters('sku')]"
+        "name": "B1",
+        "tier": "Basic",
+        "size": "B1",
+        "family": "B",
+        "capacity": 1
       },
       "kind": "linux",
-      "properties":{
-        "reserved":true
+      "properties": {
+        "perSiteScaling": false,
+        "reserved": true,
+        "targetWorkerCount": 0,
+        "targetWorkerSizeId": 0
       }
     },
     {

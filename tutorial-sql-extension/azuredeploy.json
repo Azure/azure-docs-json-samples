@@ -93,19 +93,6 @@
             "emailAddresses": "[variables('emailAddresses')]",
             "emailAccountAdmins": true
           }
-        },
-        {
-          "type": "firewallrules",
-          "name": "AllowAllAzureIps",
-          "location": "[parameters('location')]",
-          "apiVersion": "2014-04-01",
-          "dependsOn": [
-            "[variables('databaseServerName')]"
-          ],
-          "properties": {
-            "startIpAddress": "0.0.0.0",
-            "endIpAddress": "0.0.0.0"
-          }
         }
       ]
     },
@@ -118,8 +105,7 @@
       "dependsOn": [
         "[concat('Microsoft.Sql/servers/', variables('databaseServerName'))]"
       ],
-      "properties": {
-      },
+      "properties": {},
       "tags": {
         "DisplayName": "[variables('databaseServerName')]"
       }

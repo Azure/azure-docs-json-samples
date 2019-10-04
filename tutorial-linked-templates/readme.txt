@@ -1,0 +1,1 @@
+This template is used in https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-linked-templates.

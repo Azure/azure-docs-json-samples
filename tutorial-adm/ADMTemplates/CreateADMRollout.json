@@ -2,7 +2,7 @@
 	"$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
-		"namePrefix": {
+		"projectName": {
 			"type": "string",
 			"metadata": {
 				"description": "A prefix for the ADM resource names."
@@ -37,29 +37,29 @@
 	},
 	"variables": {
 		"rollout": {
-			"name": "[concat(parameters('namePrefix'),'Rollout')]"
+			"name": "[concat(parameters('projectName'),'Rollout')]"
 		},
 		"rolloutArtifactSource": {
-			"name": "[concat(parameters('namePrefix'), 'ArtifactSourceRollout')]"
+			"name": "[concat(parameters('projectName'), 'ArtifactSourceRollout')]"
 		},
 		"serviceTopology": {
-			"name": "[concat(parameters('namePrefix'),'ServiceTopology')]",
+			"name": "[concat(parameters('projectName'),'ServiceTopology')]",
 			"serviceWUS": {
-				"name": "[concat(parameters('namePrefix'),'ServiceWUS')]",
+				"name": "[concat(parameters('projectName'),'ServiceWUS')]",
 				"serviceUnit1": {
-					"name": "[concat(parameters('namePrefix'),'ServiceWUSWeb')]"
+					"name": "[concat(parameters('projectName'),'ServiceWUSWeb')]"
 				},
 				"serviceUnit2": {
-					"name": "[concat(parameters('namePrefix'),'ServiceWUSStorage')]"
+					"name": "[concat(parameters('projectName'),'ServiceWUSStorage')]"
 				}
 			},
 			"serviceEUS": {
-				"name": "[concat(parameters('namePrefix'),'ServiceEUS')]",
+				"name": "[concat(parameters('projectName'),'ServiceEUS')]",
 				"serviceUnit1": {
-					"name": "[concat(parameters('namePrefix'),'ServiceEUSWeb')]"
+					"name": "[concat(parameters('projectName'),'ServiceEUSWeb')]"
 				},
 				"serviceUnit2": {
-					"name": "[concat(parameters('namePrefix'),'ServiceEUSStorage')]"
+					"name": "[concat(parameters('projectName'),'ServiceEUSStorage')]"
 				}
 			}
 		}

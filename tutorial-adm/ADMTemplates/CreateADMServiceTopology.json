@@ -2,7 +2,7 @@
 	"$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
-		"namePrefix": {
+		"projectName": {
 			"type": "string",
 			"metadata": {
 				"description": "A prefix for the ADM resource names."
@@ -38,37 +38,37 @@
 	},
 	"variables": {
 		"serviceTopology": {
-			"name": "[concat(parameters('namePrefix'),'ServiceTopology')]"
+			"name": "[concat(parameters('projectName'),'ServiceTopology')]"
 		},
 		"topologyArtifactSource": {
-			"name": "[concat(parameters('namePrefix'), 'ArtifactSource')]"
+			"name": "[concat(parameters('projectName'), 'ArtifactSource')]"
 		},
 		"serviceWUS": {
-			"name": "[concat(parameters('namePrefix'),'ServiceWUS')]",
+			"name": "[concat(parameters('projectName'),'ServiceWUS')]",
 			"location": "WestUS",
-			"targetResourceGroupName": "[concat(parameters('namePrefix'),'ServiceWUSrg')]",
+			"targetResourceGroupName": "[concat(parameters('projectName'),'ServiceWUSrg')]",
 			"serviceUnit1": {
-				"name": "[concat(parameters('namePrefix'),'ServiceWUSWeb')]",
+				"name": "[concat(parameters('projectName'),'ServiceWUSWeb')]",
 				"templateRelativePath": "ServiceWUS/CreateWebApplication.json",
 				"parametersRelativePath": "ServiceWUS/CreateWebApplicationParameters.json"
 			},
 			"serviceUnit2": {
-				"name": "[concat(parameters('namePrefix'),'ServiceWUSStorage')]",
+				"name": "[concat(parameters('projectName'),'ServiceWUSStorage')]",
 				"templateRelativePath": "ServiceWUS/CreateStorageAccount.json",
 				"parametersRelativePath": "ServiceWUS/CreateStorageAccountParameters.json"
 			}
 		},
 		"ServiceEUS": {
-			"name": "[concat(parameters('namePrefix'),'ServiceEUS')]",
+			"name": "[concat(parameters('projectName'),'ServiceEUS')]",
 			"location": "EastUS",
-			"targetResourceGroupName": "[concat(parameters('namePrefix'),'ServiceEUSrg')]",
+			"targetResourceGroupName": "[concat(parameters('projectName'),'ServiceEUSrg')]",
 			"serviceUnit1": {
-				"name": "[concat(parameters('namePrefix'),'ServiceEUSWeb')]",
+				"name": "[concat(parameters('projectName'),'ServiceEUSWeb')]",
 				"templateRelativePath": "ServiceEUS/CreateWebApplication.json",
 				"parametersRelativePath": "ServiceEUS/CreateWebApplicationParameters.json"
 			},
 			"serviceUnit2": {
-				"name": "[concat(parameters('namePrefix'),'ServiceEUSStorage')]",
+				"name": "[concat(parameters('projectName'),'ServiceEUSStorage')]",
 				"templateRelativePath": "ServiceEUS/CreateStorageAccount.json",
 				"parametersRelativePath": "ServiceEUS/CreateStorageAccountParameters.json"
 			}

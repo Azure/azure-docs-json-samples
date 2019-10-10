@@ -2,20 +2,17 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "namePrefix": {
-      "value": "adm0925"
+    "projectName": {
+      "value": "<ProjectName>"
     },
     "azureResourceLocation": {
       "value": "centralus"
     },
     "artifactSourceSASLocation": {
-      "value": "<ArtifactSourceSASLocation>" 
+      "value": "<ArtifactSourceSASLocation>"
     },
     "templateArtifactRoot": {
       "value": "templates/1.0.0.0"
-    },
-    "targetSubscriptionID": {
-      "value": "<SubscriptionID>"
     }
   }
 }

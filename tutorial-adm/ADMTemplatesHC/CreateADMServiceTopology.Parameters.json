@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "namePrefix": {
-      "value": "adm0925"
+      "value": "<ProjectName>"
     },
     "azureResourceLocation": {
       "value": "centralus"
     },
     "artifactSourceSASLocation": {
-      "value": "<ArtifactSourceSASLocation>" 
+      "value": "<ArtifactSourceSASLocation>"
     },
     "templateArtifactRoot": {
       "value": "templates/1.0.0.0"

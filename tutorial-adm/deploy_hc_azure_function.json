@@ -17,7 +17,7 @@
     },
     "packageUrl": {
       "type": "string",
-      "defaultValue": "https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip",
+      "defaultValue": "https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip",
       "metadata": {
         "description": "Specifies the package URL."
       }

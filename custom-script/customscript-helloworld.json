@@ -7,7 +7,7 @@
     },
     "name":{
       "type": "string",
-      "defaultValue": "John"
+      "defaultValue": "John Dole"
     }
   },
   "resources": [
@@ -27,11 +27,11 @@
       "properties": {
         "azPowerShellVersion": "2.7",
         "scriptContent": "
-          param([string] $textToEcho)
-          Write-Output $textToEcho
-          $DeploymentScriptOutputs['text'] = $textToEcho
+          param([string] $name)
+          Write-Output $name
+          $DeploymentScriptOutputs['text'] = $name
         ",
-        "arguments": "[concat('-textToEcho ', 'Hello,', parameters('name'))]",
+        "arguments": "[concat('-name ', '\"Hello ', parameters('name'), '\"')]",
         "timeout": "PT30M",
         "retentionInterval": "P1D",
         "cleanupPreference": "OnSuccess",

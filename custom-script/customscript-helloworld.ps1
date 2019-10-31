@@ -1,3 +1,3 @@
-param([string] $textToEcho)
-Write-Output $textToEcho
-$DeploymentScriptOutputs['text'] = $textToEcho
+param([string] $name)
+Write-Output $name
+$DeploymentScriptOutputs['text'] = $name

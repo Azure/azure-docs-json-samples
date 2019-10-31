@@ -7,7 +7,7 @@
     },
     "name":{
       "type": "string",
-      "defaultValue": "John"
+      "defaultValue": "John Dole"
     }
   },
   "resources": [
@@ -26,8 +26,8 @@
       },
       "properties": {
         "azPowerShellVersion": "2.7",
-        "primaryScriptURI": "",
-        "arguments": "[concat('-textToEcho ', 'Hello,', parameters('name'))]",
+        "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/custom-script/customscript-helloworld.ps1",
+        "arguments": "[concat('-textToEcho ', '\"Hello ', parameters('name'), '\"')]",
         "timeout": "PT30M",
         "retentionInterval": "P1D",
         "cleanupPreference": "OnSuccess",

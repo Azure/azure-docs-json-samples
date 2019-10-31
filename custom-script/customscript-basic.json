@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "identity": {
+      "type": "string",
+      "defaultValue": "/subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/jgaoidentity1008rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/jgaouami"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deploymentScripts",
+      "name": "scriptInTemplate1",
+      "apiVersion": "2019-10-01-preview",
+      "location": "[resourceGroup().location]",
+      "kind": "AzurePowerShell",
+      "identity": {
+        "type": "userAssigned",
+        "userAssignedIdentities": {
+          "[parameters('identity')]": {
+          }
+        }
+      },
+      "properties": {
+        "azPowerShellVersion": "2.7",
+        "scriptContent": "
+          param([string] $name)
+          Write-Output $name
+          $DeploymentScriptOutputs['text'] = $name
+        ",
+        "arguments": "[concat('-name ', '\"Hello ', parameters('name'), '\"')]",
+        "timeout": "PT30M",
+        "retentionInterval": "P1D",
+        "cleanupPreference": "OnSuccess",
+        "forceUpdateTag": "1"
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deploymentScripts",
+      "name": "scriptInTemplate2",
+      "apiVersion": "2019-10-01-preview",
+      "location": "[resourceGroup().location]",
+      "kind": "AzurePowerShell",
+      "dependsOn": [
+        "scriptInTemplate1"
+      ],
+      "identity": {
+        "type": "userAssigned",
+        "userAssignedIdentities": {
+          "[parameters('identity')]": {
+          }
+        }
+      },
+      "properties": {
+        "azPowerShellVersion": "2.7",
+          "scriptContent": "
+            param([string] $textToEcho)
+            Write-Output $textToEcho
+            $DeploymentScriptOutputs['text'] = $textToEcho
+          ",
+          "arguments": "[concat('-textToEcho ', reference('scriptInTemplate1').outputs.text)]",
+        "timeout": "PT30M",
+        "retentionInterval": "P1D"
+      }
+    }
+  ],
+  "outputs": {
+    "result": {
+      "value": "[reference('scriptInTemplate2').outputs.text]",
+      "type": "string"
+    }
+  }
+}

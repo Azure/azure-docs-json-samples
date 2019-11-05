@@ -3,8 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "identity": {
-      "type": "string",
-      "defaultValue": "/subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/jgaoidentity1008rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/jgaouami"
+      "type": "string"
     }
   },
   "resources": [

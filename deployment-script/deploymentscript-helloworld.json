@@ -7,7 +7,7 @@
     },
     "name":{
       "type": "string",
-      "defaultValue": "John Dole"
+      "defaultValue": "John"
     }
   },
   "resources": [
@@ -33,9 +33,8 @@
           $DeploymentScriptOutputs['text'] = $output
         ",
         "arguments": "[concat('-name ', parameters('name'))]",
-        "timeout": "PT30M",
-        "retentionInterval": "P1D",
         "cleanupPreference": "OnSuccess",
+        "retentionInterval": "P1D",
         "forceUpdateTag": "1"
       }
     }

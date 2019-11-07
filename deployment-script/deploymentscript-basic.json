@@ -32,9 +32,8 @@
           $DeploymentScriptOutputs['text'] = $output
         ",
         "arguments": "[concat('-name ', parameters('name'))]",
-        "timeout": "PT30M",
+        "cleanupPreference": "Always",
         "retentionInterval": "P1D",
-        "cleanupPreference": "OnSuccess",
         "forceUpdateTag": "1"
       }
     },
@@ -56,13 +55,13 @@
       },
       "properties": {
         "azPowerShellVersion": "2.7",
-          "scriptContent": "
-            param([string] $textToEcho)
-            Write-Output $textToEcho
-            $DeploymentScriptOutputs['text'] = $textToEcho
-          ",
-          "arguments": "[concat('-textToEcho ', reference('scriptInTemplate1').outputs.text)]",
-        "timeout": "PT30M",
+        "scriptContent": "
+          param([string] $textToEcho)
+          Write-Output $textToEcho
+          $DeploymentScriptOutputs['text'] = $textToEcho
+        ",
+        "arguments": "[concat('-textToEcho ', reference('scriptInTemplate1').outputs.text)]",
+        "cleanupPreference": "Always",
         "retentionInterval": "P1D"
       }
     }

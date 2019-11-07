@@ -28,10 +28,11 @@
         "azPowerShellVersion": "2.7",
         "scriptContent": "
           param([string] $name)
-          Write-Output $name
-          $DeploymentScriptOutputs['text'] = $name
+          $output = 'Hello $name'
+          Write-Output $output
+          $DeploymentScriptOutputs['text'] = $output
         ",
-        "arguments": "[concat('-name ', '\"Hello ', parameters('name'), '\"')]",
+        "arguments": "[concat('-name ', parameters('name'))]",
         "timeout": "PT30M",
         "retentionInterval": "P1D",
         "cleanupPreference": "OnSuccess",

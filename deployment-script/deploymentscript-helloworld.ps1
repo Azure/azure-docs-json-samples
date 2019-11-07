@@ -1,3 +1,4 @@
 param([string] $name)
-Write-Output $name
-$DeploymentScriptOutputs['text'] = $name
+$output = 'Hello $name'
+Write-Output $output
+$DeploymentScriptOutputs['text'] = $output

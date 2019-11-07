@@ -65,6 +65,7 @@
         "azPowerShellVersion": "2.7",
         "scriptContent": "
           param([string] $accountName, [string] $accountKey, [string] $containerName)
+          Write-Output $containerName
           $storageContext = New-AzStorageContext -StorageAccountName $accountName -StorageAccountKey $accountKey
           New-AzStorageContainer -Name $containerName -Context $storageContext
         ",

@@ -7,7 +7,7 @@
     },
     "name":{
       "type": "string",
-      "defaultValue": "John Dole"
+      "defaultValue": "John"
     }
   },
   "resources": [
@@ -27,7 +27,7 @@
       "properties": {
         "azPowerShellVersion": "2.7",
         "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
-        "arguments": "[concat('-name ', '\"Hello ', parameters('name'), '\"')]",
+        "arguments": "[concat('-name ', parameters('name'))]",
         "timeout": "PT30M",
         "retentionInterval": "P1D",
         "cleanupPreference": "OnSuccess",

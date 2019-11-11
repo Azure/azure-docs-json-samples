@@ -33,7 +33,7 @@
           $DeploymentScriptOutputs['text'] = $output
         ",
         "arguments": "[concat('-name ', parameters('name'))]",
-        "time": "PH1H",
+        "timeout": "PT1H",
         "cleanupPreference": "OnSuccess",
         "retentionInterval": "P1D",
         "forceUpdateTag": "1"

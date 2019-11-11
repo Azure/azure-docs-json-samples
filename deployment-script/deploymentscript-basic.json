@@ -32,7 +32,7 @@
           $DeploymentScriptOutputs['text'] = $output
         ",
         "arguments": "[concat('-name ', parameters('name'))]",
-        "time": "PH1H",
+        "timeout": "PT1H",
         "cleanupPreference": "Always",
         "retentionInterval": "P1D",
         "forceUpdateTag": "1"
@@ -62,7 +62,7 @@
           $DeploymentScriptOutputs['text'] = $textToEcho
         ",
         "arguments": "[concat('-textToEcho ', reference('scriptInTemplate1').outputs.text)]",
-        "time": "PH1H",
+        "timeout": "PT1H",
         "cleanupPreference": "Always",
         "retentionInterval": "P1D"
       }

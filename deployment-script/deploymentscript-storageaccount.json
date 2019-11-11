@@ -70,7 +70,7 @@
           New-AzStorageContainer -Name $containerName -Context $storageContext
         ",
         "arguments": "[concat('-accountName ', variables('storageAccountName'), ' -accountKey ', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value, ' -containerName ', variables('containerName'))]",
-        "time": "PH1H",
+        "timeout": "PT1H",
         "cleanupPreference": "OnSuccess",
         "retentionInterval": "P1D",
         "forceUpdateTag": "1"

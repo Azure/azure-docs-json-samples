@@ -28,6 +28,7 @@
         "azPowerShellVersion": "2.7",
         "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
         "arguments": "[concat('-name ', parameters('name'))]",
+        "time": "PH1H",
         "cleanupPreference": "OnSuccess",
         "retentionInterval": "P1D",
         "forceUpdateTag": "1"

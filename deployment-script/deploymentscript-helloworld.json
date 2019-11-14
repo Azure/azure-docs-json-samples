@@ -13,8 +13,8 @@
   "resources": [
     {
       "type": "Microsoft.Resources/deploymentScripts",
-      "name": "scriptInTemplate1",
       "apiVersion": "2019-10-01-preview",
+      "name": "scriptInTemplate1",
       "location": "[resourceGroup().location]",
       "kind": "AzurePowerShell",
       "identity": {
@@ -25,6 +25,7 @@
         }
       },
       "properties": {
+        "forceUpdateTag": "1",
         "azPowerShellVersion": "2.7",
         "scriptContent": "
           param([string] $name)
@@ -35,8 +36,7 @@
         "arguments": "[concat('-name ', parameters('name'))]",
         "timeout": "PT1H",
         "cleanupPreference": "OnSuccess",
-        "retentionInterval": "P1D",
-        "forceUpdateTag": "1"
+        "retentionInterval": "P1D"
       }
     }
   ],

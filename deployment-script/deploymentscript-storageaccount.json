@@ -47,8 +47,8 @@
     },
     {
       "type": "Microsoft.Resources/deploymentScripts",
-      "name": "createContainer",
       "apiVersion": "2019-10-01-preview",
+      "name": "createContainer",
       "location": "[resourceGroup().location]",
       "kind": "AzurePowerShell",
       "identity": {
@@ -62,6 +62,7 @@
         "[resourceId('Microsoft.Storage/storageAccounts',variables('storageAccountName'))]"
       ],
       "properties": {
+        "forceUpdateTag": "1",
         "azPowerShellVersion": "2.7",
         "scriptContent": "
           param([string] $accountName, [string] $accountKey, [string] $containerName)
@@ -72,8 +73,7 @@
         "arguments": "[concat('-accountName ', variables('storageAccountName'), ' -accountKey ', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value, ' -containerName ', variables('containerName'))]",
         "timeout": "PT1H",
         "cleanupPreference": "OnSuccess",
-        "retentionInterval": "P1D",
-        "forceUpdateTag": "1"
+        "retentionInterval": "P1D"
       }
     }
   ],

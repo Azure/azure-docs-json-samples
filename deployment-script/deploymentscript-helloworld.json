@@ -29,6 +29,7 @@
         "azPowerShellVersion": "2.7",
         "scriptContent": "
           param([string] $name)
+          $DeploymentScriptOutputs = @{}
           $output = 'Hello $name'
           Write-Output $output
           $DeploymentScriptOutputs['text'] = $output

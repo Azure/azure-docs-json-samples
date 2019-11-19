@@ -205,8 +205,6 @@
         "forceUpdateTag": 1,
         "azPowerShellVersion": "2.7",
         "timeout": "PT30M",
-        "retentionInterval": "P1D",
-        "cleanupPreference": "OnSuccess",
         "arguments": "[format(' -vaultName {0} -certificateName {1} -subjectName {2}', parameters('keyVaultName'), parameters('certificateName'), parameters('subjectName'))]", // can pass an arguement string, double quotes must be escaped
         "environmentVariables": [
           {
@@ -240,7 +238,9 @@
           $DeploymentScriptOutputs = @{}
           $DeploymentScriptOutputs['certThumbprint'] = $cert.Thumbprint
           $cert | Out-String
-        "
+        ",
+        "cleanupPreference": "OnSuccess",
+        "retentionInterval": "P1D"
       }
     }
   ]

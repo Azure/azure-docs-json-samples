@@ -7,6 +7,10 @@
     },
     "name":{
       "type":"string"
+    },
+    "utcValue": {
+      "type": "string",
+      "defaultValue": "[utcNow()]"
     }
   },
   "resources": [
@@ -24,8 +28,10 @@
         }
       },
       "properties": {
-        "forceUpdateTag": "1",
+        "forceUpdateTag": "[parameters('utcValue')]",
         "azPowerShellVersion": "2.7",
+        "timeout": "PT1H",
+        "arguments": "[concat('-name ', parameters('name'))]",
         "scriptContent": "
           param([string] $name)
           $DeploymentScriptOutputs = @{}
@@ -33,8 +39,6 @@
           Write-Output $output
           $DeploymentScriptOutputs['text'] = $output
         ",
-        "arguments": "[concat('-name ', parameters('name'))]",
-        "timeout": "PT1H",
         "cleanupPreference": "Always",
         "retentionInterval": "P1D"
       }
@@ -45,9 +49,6 @@
       "name": "scriptInTemplate2",
       "location": "[resourceGroup().location]",
       "kind": "AzurePowerShell",
-      "dependsOn": [
-        "scriptInTemplate1"
-      ],
       "identity": {
         "type": "userAssigned",
         "userAssignedIdentities": {
@@ -55,16 +56,20 @@
           }
         }
       },
+      "dependsOn": [
+        "scriptInTemplate1"
+      ],
       "properties": {
+        "forceUpdateTag": "[parameters('utcValue')]",
         "azPowerShellVersion": "2.7",
+        "timeout": "PT1H",
+        "arguments": "[concat('-textToEcho ', reference('scriptInTemplate1').outputs.text)]",
         "scriptContent": "
           param([string] $textToEcho)
-          $DeploymentScriptOutputs = @{}
           Write-Output $textToEcho
+          $DeploymentScriptOutputs = @{}
           $DeploymentScriptOutputs['text'] = $textToEcho
         ",
-        "arguments": "[concat('-textToEcho ', reference('scriptInTemplate1').outputs.text)]",
-        "timeout": "PT1H",
         "cleanupPreference": "Always",
         "retentionInterval": "P1D"
       }

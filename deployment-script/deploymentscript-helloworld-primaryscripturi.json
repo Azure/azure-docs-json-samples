@@ -8,6 +8,10 @@
     "name":{
       "type": "string",
       "defaultValue": "John"
+    },
+    "utcValue": {
+      "type": "string",
+      "defaultValue": "[utcNow()]"
     }
   },
   "resources": [
@@ -25,11 +29,11 @@
         }
       },
       "properties": {
-        "forceUpdateTag": "1",
+        "forceUpdateTag": "[parameters('utcValue')]",
         "azPowerShellVersion": "2.7",
-        "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
-        "arguments": "[concat('-name ', parameters('name'))]",
         "timeout": "PT1H",
+        "arguments": "[concat('-name ', parameters('name'))]",
+        "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
         "cleanupPreference": "OnSuccess",
         "retentionInterval": "P1D"
       }

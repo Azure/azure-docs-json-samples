@@ -8,6 +8,10 @@
     "name":{
       "type": "string",
       "defaultValue": "John"
+    },
+    "utcValue": {
+      "type": "string",
+      "defaultValue": "[utcNow()]"
     }
   },
   "resources": [
@@ -25,13 +29,13 @@
         }
       },
       "properties": {
-        "forceUpdateTag": "1",
+        "forceUpdateTag": "[parameters('utcValue')]",
         "azPowerShellVersion": "2.7",
         "scriptContent": "
           param([string] $name)
-          $DeploymentScriptOutputs = @{}
           $output = '\"Hello $name\"'
           Write-Output $output
+          $DeploymentScriptOutputs = @{}
           $DeploymentScriptOutputs['text'] = $output
         ",
         "arguments": "[concat('-name ', parameters('name'))]",

@@ -115,6 +115,10 @@
     "subjectName": {
       "type": "string",
       "defaultValue": "CN=contoso.com"
+    },
+    "utcValue": {
+      "type": "string",
+      "defaultValue": "[utcNow()]"
     }
   },
   "variables":{
@@ -202,7 +206,7 @@
       },
       "kind": "AzurePowerShell",
       "properties": {
-        "forceUpdateTag": 1,
+        "forceUpdateTag": "[parameters('utcValue')]",
         "azPowerShellVersion": "2.7",
         "timeout": "PT30M",
         "arguments": "[format(' -vaultName {0} -certificateName {1} -subjectName {2}', parameters('keyVaultName'), parameters('certificateName'), parameters('subjectName'))]", // can pass an arguement string, double quotes must be escaped

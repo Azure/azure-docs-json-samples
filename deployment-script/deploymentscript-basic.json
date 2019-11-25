@@ -34,9 +34,9 @@
         "arguments": "[concat('-name ', parameters('name'))]",
         "scriptContent": "
           param([string] $name)
-          $DeploymentScriptOutputs = @{}
           $output = '\"Hello $name\"'
           Write-Output $output
+          $DeploymentScriptOutputs = @{}
           $DeploymentScriptOutputs['text'] = $output
         ",
         "cleanupPreference": "Always",

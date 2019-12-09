@@ -74,14 +74,14 @@
           "apiVersion": "2014-04-01",
           "name": "Import",
           "dependsOn": [
-            "[resourceId('Microsoft.Sql/servers/databases', variables('databaseServerName'), variables('databaseName'))]"
+            "[resourceId('Microsoft.Sql/servers/databases', parameters('databaseServerName'), parameters('databaseName'))]"
           ],
           "properties": {
             "storageKeyType": "StorageAccessKey",
             "storageKey": "[parameters('storageAccountKey')]",
             "storageUri": "[parameters('bacpacUrl')]",
-            "administratorLogin": "[variables('databaseServerAdminLogin')]",
-            "administratorLoginPassword": "[variables('databaseServerAdminLoginPassword')]",
+            "administratorLogin": "[parameters('adminUser')]",
+            "administratorLoginPassword": "[parameters('adminPassword')]",
             "operationMode": "Import"
           }
         }

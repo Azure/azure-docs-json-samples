@@ -30,7 +30,7 @@
       },
       "properties": {
         "forceUpdateTag": "[parameters('utcValue')]",
-        "azPowerShellVersion": "2.8",
+        "azPowerShellVersion": "3.0",
         "scriptContent": "
           param([string] $name)
           $output = 'Hello {0}' -f $name

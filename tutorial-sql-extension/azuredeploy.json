@@ -34,18 +34,6 @@
       "metadata": {
         "description": "Specifies the password for admin"
       }
-    },
-    "storageAccountKey": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the key of the storage account where the BACPAC file is stored."
-      }
-    },
-    "bacpacUrl": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the URL of the BACPAC file."
-      }
     }
   },
   "resources": [
@@ -67,24 +55,6 @@
       "location": "[parameters('location')]",
       "dependsOn": [
         "[concat('Microsoft.Sql/servers/', parameters('databaseServerName'))]"
-      ],
-      "resources": [
-        {
-          "type": "extensions",
-          "apiVersion": "2014-04-01",
-          "name": "Import",
-          "dependsOn": [
-            "[resourceId('Microsoft.Sql/servers/databases', parameters('databaseServerName'), parameters('databaseName'))]"
-          ],
-          "properties": {
-            "storageKeyType": "StorageAccessKey",
-            "storageKey": "[parameters('storageAccountKey')]",
-            "storageUri": "[parameters('bacpacUrl')]",
-            "administratorLogin": "[parameters('adminUser')]",
-            "administratorLoginPassword": "[parameters('adminPassword')]",
-            "operationMode": "Import"
-          }
-        }
       ]
     }
   ]

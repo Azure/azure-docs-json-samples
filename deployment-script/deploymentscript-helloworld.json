@@ -7,7 +7,7 @@
     },
     "name":{
       "type": "string",
-      "defaultValue": "John"
+      "defaultValue": "'John Dole'"
     },
     "utcValue": {
       "type": "string",
@@ -33,7 +33,7 @@
         "azPowerShellVersion": "2.7",
         "scriptContent": "
           param([string] $name)
-          $output = '\"Hello $name\"'
+          $output = 'Hello {0}' $name
           Write-Output $output
           $DeploymentScriptOutputs = @{}
           $DeploymentScriptOutputs['text'] = $output

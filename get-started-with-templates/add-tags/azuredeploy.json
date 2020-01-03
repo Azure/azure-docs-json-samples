@@ -75,7 +75,6 @@
       "apiVersion": "2016-09-01",
       "name": "[parameters('appServicePlanName')]",
       "location": "[parameters('location')]",
-      "tags": "[parameters('resourceTags')]",
       "sku": {
         "name": "B1",
         "tier": "Basic",
@@ -84,6 +83,7 @@
         "capacity": 1
       },
       "kind": "linux",
+      "tags": "[parameters('resourceTags')]",
       "properties": {
         "perSiteScaling": false,
         "reserved": true,
@@ -97,16 +97,16 @@
       "kind": "app",
       "name": "[variables('webAppPortalName')]",
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "[parameters('appServicePlanName')]"
+      ],
       "tags": "[parameters('resourceTags')]",
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
           "linuxFxVersion": "[parameters('linuxFxVersion')]"
         }
-      },
-      "dependsOn": [
-        "[parameters('appServicePlanName')]"
-      ]
+      }
     }
   ],
   "outputs": {

@@ -210,12 +210,6 @@
         "azPowerShellVersion": "2.8",
         "timeout": "PT30M",
         "arguments": "[format(' -vaultName {0} -certificateName {1} -subjectName {2}', parameters('keyVaultName'), parameters('certificateName'), parameters('subjectName'))]", // can pass an arguement string, double quotes must be escaped
-        "environmentVariables": [
-          {
-            "name": "someSecret",
-            "secureValue": "if this is really a secret, don't put it here... in plain text..."
-          }
-        ],
         "scriptContent": "
           param(
           [string] [Parameter(Mandatory=$false)] $vaultName,

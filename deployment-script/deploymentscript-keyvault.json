@@ -2,12 +2,6 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "identityName": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the name of the user-assigned managed identity."
-      }
-    },
     "keyVaultName": {
       "type": "string",
       "metadata": {
@@ -85,6 +79,23 @@
         "description": "Specifies the permissions to secrets in the vault. Valid values are: all, get, list, set, delete, backup, restore, recover, and purge."
       }
     },
+    "skuName": {
+      "type": "string",
+      "defaultValue": "Standard",
+      "allowedValues": [
+        "Standard",
+        "Premium"
+      ],
+      "metadata": {
+        "description": "Specifies whether the key vault is a standard vault or a premium vault."
+      }
+    },
+    "identityId": {
+      "type": "string",
+      "metadata": {
+        "description": "Specifies the ID of the user-assigned managed identity."
+      }
+    },
     "certificatesPermissions": {
       "type": "array",
       "defaultValue": [
@@ -95,17 +106,6 @@
       ],
       "metadata": {
         "description": "Specifies the permissions to certificates in the vault. Valid values are: all, get, list, update, create, import, delete, recover, backup, restore, manage contacts, manage certificate authorities, get certificate authorities, list certificate authorities, set certificate authorities, delete certificate authorities."
-      }
-    },
-    "skuName": {
-      "type": "string",
-      "defaultValue": "Standard",
-      "allowedValues": [
-        "Standard",
-        "Premium"
-      ],
-      "metadata": {
-        "description": "Specifies whether the key vault is a standard vault or a premium vault."
       }
     },
     "certificateName": {
@@ -121,31 +121,7 @@
       "defaultValue": "[utcNow()]"
     }
   },
-  "variables":{
-    "bootstrapRoleAssignmentId": "[guid(concat(resourceGroup().id, 'contributor'))]",
-    "contributorRoleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]"
-  },
   "resources": [
-    {
-      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-      "apiVersion": "2018-11-30",
-      "name": "[parameters('identityName')]",
-      "location": "[resourceGroup().location]"
-    },
-    {
-      "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2018-09-01-preview",
-      "name": "[variables('bootstrapRoleAssignmentId')]",
-      "dependsOn": [
-          "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
-      ],
-      "properties": {
-          "roleDefinitionId": "[variables('contributorRoleDefinitionId')]",
-          "principalId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName')), '2018-11-30').principalId]",
-          "scope": "[resourceGroup().id]",
-          "principalType": "ServicePrincipal"
-      }
-    },
     {
       "type": "Microsoft.KeyVault/vaults",
       "name": "[parameters('keyVaultName')]",
@@ -167,7 +143,7 @@
             }
           },
           {
-            "objectId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName')), '2018-11-30').principalId]",
+            "objectId": "[reference(parameters('identityId'), '2018-11-30').principalId]",
             "tenantId": "[parameters('tenantId')]",
             "permissions": {
               "keys": "[parameters('keysPermissions')]",
@@ -181,10 +157,8 @@
           "family": "A"
         },
         "networkAcls": {
-          "value": {
-            "defaultAction": "Allow",
-            "bypass": "AzureServices"
-          }
+          "defaultAction": "Allow",
+          "bypass": "AzureServices"
         }
       }
     },
@@ -194,13 +168,12 @@
       "name": "createAddCertificate",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]",
-        "[resourceId('Microsoft.Authorization/roleAssignments', variables('bootstrapRoleAssignmentId'))]"
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]"
       ],
       "identity": {
         "type": "UserAssigned",
         "userAssignedIdentities": {
-          "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]": {
+          "[parameters('identityId')]": {
           }
         }
       },
@@ -212,30 +185,53 @@
         "arguments": "[format(' -vaultName {0} -certificateName {1} -subjectName {2}', parameters('keyVaultName'), parameters('certificateName'), parameters('subjectName'))]", // can pass an arguement string, double quotes must be escaped
         "scriptContent": "
           param(
-          [string] [Parameter(Mandatory=$false)] $vaultName,
-          [string] [Parameter(Mandatory=$false)] $certificateName,
-          [string] [Parameter(Mandatory=$false)] $subjectName
+            [string] [Parameter(Mandatory=$true)] $vaultName,
+            [string] [Parameter(Mandatory=$true)] $certificateName,
+            [string] [Parameter(Mandatory=$true)] $subjectName
           )
 
           $ErrorActionPreference = 'Stop'
-
-          $policy = New-AzKeyVaultCertificatePolicy -SubjectName $subjectName -IssuerName Self -ValidityInMonths 12 -Verbose
-
-          # private key is added as a secret that can be retrieved in the ARM template
-          Add-AzKeyVaultCertificate -VaultName $vaultName -Name $certificateName -CertificatePolicy $policy -Verbose
-
-          $cert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certificateName
-
-          # it take a few seconds for KeyVault to finish
-          while($cert.Thumbprint -eq $null){
-              Write-Output 'Sleeping...'
-              Start-Sleep 5
-              $cert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certificateName
-          }
-
           $DeploymentScriptOutputs = @{}
-          $DeploymentScriptOutputs['certThumbprint'] = $cert.Thumbprint
-          $cert | Out-String
+
+          $existingCert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certificateName
+
+          if ($existingCert -and $existingCert.Certificate.Subject -eq $subjectName) {
+
+            Write-Host 'Certificate $certificateName in vault $vaultName is already present.'
+
+            $DeploymentScriptOutputs['certThumbprint'] = $existingCert.Thumbprint
+            $existingCert | Out-String
+          }
+          else {
+            $policy = New-AzKeyVaultCertificatePolicy -SubjectName $subjectName -IssuerName Self -ValidityInMonths 12 -Verbose
+
+            # private key is added as a secret that can be retrieved in the ARM template
+            Add-AzKeyVaultCertificate -VaultName $vaultName -Name $certificateName -CertificatePolicy $policy -Verbose
+
+            $newCert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certificateName
+
+            # it takes a few seconds for KeyVault to finish
+            $tries = 0
+            do {
+              Write-Host 'Waiting for certificate creation completion...'
+              Start-Sleep -Seconds 10
+              $operation = Get-AzKeyVaultCertificateOperation -VaultName $vaultName -Name $certificateName
+              $tries++
+
+              if ($operation.Status -eq 'failed')
+              {
+                throw 'Creating certificate $certificateName in vault $vaultName failed with error $($operation.ErrorMessage)'
+              }
+
+              if ($tries -gt 120)
+              {
+                throw 'Timed out waiting for creation of certificate $certificateName in vault $vaultName'
+              }
+            } while ($operation.Status -ne 'completed')
+
+            $DeploymentScriptOutputs['certThumbprint'] = $newCert.Thumbprint
+            $newCert | Out-String
+          }
         ",
         "cleanupPreference": "OnSuccess",
         "retentionInterval": "P1D"

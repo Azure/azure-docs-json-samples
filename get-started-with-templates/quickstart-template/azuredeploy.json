@@ -87,10 +87,10 @@
       "apiVersion": "2018-11-01",
       "name": "[variables('webAppPortalName')]",
       "location": "[parameters('location')]",
-      "kind": "app",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
       ],
+      "kind": "app",
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {

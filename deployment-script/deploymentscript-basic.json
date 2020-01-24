@@ -29,7 +29,7 @@
       },
       "properties": {
         "forceUpdateTag": "[parameters('utcValue')]",
-        "azPowerShellVersion": "2.8",
+        "azPowerShellVersion": "3.0",
         "timeout": "PT1H",
         "arguments": "[concat('-name ', parameters('name'))]",
         "scriptContent": "
@@ -61,7 +61,7 @@
       ],
       "properties": {
         "forceUpdateTag": "[parameters('utcValue')]",
-        "azPowerShellVersion": "2.8",
+        "azPowerShellVersion": "3.0",
         "timeout": "PT1H",
         "arguments": "[concat('-textToEcho ', reference('scriptInTemplate1').outputs.text)]",
         "scriptContent": "

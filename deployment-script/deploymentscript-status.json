@@ -14,7 +14,7 @@
   "properties": {
     "provisioningState": "Succeeded",
     "forceUpdateTag": "20200108T214856Z",
-    "azPowerShellVersion": "2.8",
+    "azPowerShellVersion": "3.0",
     "scriptContent": "\n          param([string] $name)\n          $output = 'Hello {0}' -f $name\n          Write-Output $output\n          $DeploymentScriptOutputs = @{}\n          $DeploymentScriptOutputs['text'] = $output\n        ",
     "arguments": "-name 'John Dole'",
     "retentionInterval": "P1D",

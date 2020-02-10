@@ -1,0 +1,125 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "targetMG": {
+      "type": "string",
+      "metadata": {
+        "description": "Specify the name of the management group."
+      }
+    },
+    "nestedsubId": {
+      "type": "string",
+      "metadata": {
+        "description": "Specify the subscription ID."
+      }
+    },
+    "nestedRG": {
+      "type": "string",
+      "metadata": {
+        "description": "Specify the name of the resource group."
+      }
+    },
+    "storageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Specify the name of the storage account."
+      }
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "Specify the location for the deployment, resource group and resources."
+      }
+    }
+  },
+  "variables": {
+    "mgScope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('targetMG'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyDefinitions",
+      "apiVersion": "2019-06-01",
+      "name": "policy2",
+      "properties": {
+        "policyType": "Custom",
+        "parameters": {
+        },
+        "policyRule": {
+          "if": {
+            "field": "location",
+            "equals": "northeurope"
+          },
+          "then": {
+            "effect": "deny"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "apiVersion": "2019-06-01",
+      "name": "location-lock",
+      "dependsOn": [
+        "policy2"
+      ],
+      "properties": {
+        "scope": "[variables('mgScope')]",
+        "policyDefinitionId": "[concat(variables('mgScope'), '/providers/', 'Microsoft.Authorization/policyDefinitions/', 'policy2')]"
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "name": "ps_test_management_group_deployment",
+      "location": "[parameters('location')]",
+      "subscriptionId": "[parameters('nestedSubId')]",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+          },
+          "variables": {
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/resourceGroups",
+              "apiVersion": "2019-10-01",
+              "name": "[parameters('nestedRG')]",
+              "location": "[parameters('location')]",
+            },
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2019-10-01",
+              "name": "ps_test_management_group_deployment",
+              "resourceGroup": "[parameters('nestedRG')]",
+              "dependsOn": [
+                "[parameters('nestedRG')]"
+              ],
+              "properties": {
+                "mode": "Incremental",
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "resources": [
+                    {
+                      "type": "Microsoft.Storage/storageAccounts",
+                      "apiVersion": "2019-04-01",
+                      "name": "[parameters('storageAccountName')]",
+                      "location": "[parameters('location')]",
+                      "sku": {
+                        "name": "Standard_LRS"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

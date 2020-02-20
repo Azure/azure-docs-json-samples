@@ -28,9 +28,9 @@
         "forceUpdateTag": "[parameters('utcValue')]",
         "AzCliVersion": "2.0.80",
         "timeout": "PT30M",
-        "arguments": "'foo'",
-        "scriptContent": "result=$(az keyvault list); echo \"arg1 is: $1\"; echo \"arg2 is: $2\"; echo $result | jq -c '{Result: map({id: .id})}' > $AZ_DEPLOYMENTS_SCRIPTS_OUTPUT_PATH",
-        "cleanupPreference": "OnExpiration",
+        "arguments": "'foo','bar'",
+        "scriptContent": "result=$(az keyvault list); echo \"arg1 is: $1\"; echo \"arg2 is: $2\"; echo $result | jq -c '{Result: map({id: .id})}' > $AZ_SCRIPTS_OUTPUT_PATH",
+        "cleanupPreference": "OnSuccess",
         "retentionInterval": "P1D"
       }
     }

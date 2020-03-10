@@ -3,10 +3,10 @@
  "contentVersion": "1.0.0.0",
  "parameters": {
    "projectName": {
-     "value": "jgao0309"
+     "value": ""
    },
    "linkedTemplateUri": {
-     "value": "https://raw.githubusercontent.com/mumian/AzureRMPipeline-repo/master/CreateWebApp/linkedStorageAccount.json"
+     "value": ""
    }
  }
 }

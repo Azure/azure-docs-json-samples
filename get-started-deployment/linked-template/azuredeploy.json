@@ -32,9 +32,9 @@
     }
   },
   "variables": {
+    "storageAccountName": "[concat(parameters('projectName'), 'store')]",
     "webAppName": "[concat(parameters('projectName'), 'WebApp')]",
-    "appServicePlanName": "[concat(parameters('projectName'), 'Plan')]",
-    "storageAccountName": "[concat(parameters('projectName'), 'store')]"
+    "appServicePlanName": "[concat(parameters('projectName'), 'Plan')]"
   },
   "resources": [
     {

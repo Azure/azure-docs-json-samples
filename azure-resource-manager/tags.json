@@ -1,0 +1,28 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tagName": {
+            "type": "string",
+            "defaultValue": "TeamName"
+        },
+        "tagValue": {
+            "type": "string",
+            "defaultValue": "AppTeam1"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/tags",
+            "name": "default",
+            "apiVersion": "2019-10-01",
+            "dependsOn": [],
+            "properties": {
+                "tags": {
+                    "[parameters('tagName')]": "[parameters('tagValue')]"
+                }
+            }
+        }
+    ]
+}

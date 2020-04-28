@@ -2,6 +2,14 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "jsonObject1": {
+            "type": "string",
+            "defaultValue": "null"
+        },
+        "jsonObject2": {
+            "type": "string",
+            "defaultValue": "{\"a\": \"b\"}"
+        },
         "testValue": {
             "type": "string",
             "defaultValue": "demo value"
@@ -10,13 +18,13 @@
     "resources": [
     ],
     "outputs": {
-        "jsonOutput": {
-            "type": "object",
-            "value": "[json('{\"a\": \"b\"}')]"
-        },
-        "nullOutput": {
+        "jsonOutput1": {
             "type": "bool",
-            "value": "[empty(json('null'))]"
+            "value": "[empty(json(parameters('jsonObject1')))]"
+        },
+        "jsonOutput2": {
+            "type": "object",
+            "value": "[json(parameters('jsonObject2'))]"
         },
         "paramOutput": {
             "type": "object",

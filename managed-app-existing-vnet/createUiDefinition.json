@@ -1,0 +1,150 @@
+{
+  "handler": "Microsoft.Azure.CreateUIDef",
+  "version": "0.1.2-preview",
+  "parameters": {
+    "basics": [],
+    "steps": [
+      {
+        "name": "deploymentDetails",
+        "label": "Deployment Details",
+        "subLabel": {
+          "preValidation": "Required",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Deployment Details",
+        "elements": [
+          {
+            "name": "virtualMachine",
+            "type": "Microsoft.Common.Section",
+            "elements": [
+              {
+                "name": "vmName",
+                "type": "Microsoft.Common.TextBox",
+                "label": "VM Name",
+                "toolTip": "Name of your virtual machine",
+                "constraints": {
+                  "required": true
+                }
+              },
+              {
+                "name": "vmPassword",
+                "type": "Microsoft.Compute.CredentialsCombo",
+                "label": {
+                  "password": "Password",
+                  "confirmPassword": "Confirm password"
+                },
+                "toolTip": {
+                  "password": ""
+                },
+                "constraints": {
+                  "required": true,
+                  "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{12,}$",
+                  "customValidationMessage": "The password must be alphanumeric, contain at least 12 characters, and have at least 1 letter and 1 number."
+                },
+                "options": {
+                  "hideConfirmation": false
+                },
+                "osPlatform": "Windows",
+                "visible": true
+              }
+            ],
+            "visible": true
+          },
+          {
+            "name": "vnet",
+            "type": "Microsoft.Network.VirtualNetworkCombo",
+            "label": {
+              "virtualNetwork": "Virtual Network",
+              "subnets": "Subnets"
+            },
+            "defaultValue": {
+              "name": "vmx-vnet",
+              "addressPrefixSize": "/16"
+            },
+            "constraints": {
+              "minAddressPrefixSize": "/24"
+            },
+            "subnets": {
+              "subnet1": {
+                "label": "Subnet",
+                "defaultValue": {
+                  "name": "vmx-subnet",
+                  "addressPrefixSize": "/24"
+                },
+                "constraints": {
+                  "minAddressPrefixSize": "/29",
+                  "minAddressCount": 8,
+                  "requireContiguousAddresses": true
+                }
+              }
+            }
+          },
+          {
+            "name": "VMSize",
+            "type": "Microsoft.Compute.SizeSelector",
+            "label": "VM size",
+            "toolTip": "The size of virtual machine for VM.",
+            "recommendedSizes": [
+              "Standard_D2_v2",
+              "Standard_D2_v3"
+            ],
+            "constraints": {
+              "allowedSizes": [
+                "Standard_D2_v2",
+                "Standard_D2_v3"
+              ],
+              "excludedSizes": []
+            },
+            "osPlatform": "Windows",
+            "imageReference": {
+              "publisher": "MicrosoftWindowsServer",
+              "offer": "WindowsServer",
+              "sku": "2012-R2-Datacenter"
+            }
+          }
+        ]
+      },
+      {
+        "name": "identityDetails",
+        "label": "Managed Identity Details",
+        "subLabel": {
+          "preValidation": "Required",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Managed Identity Details",
+        "elements": [
+          {
+            "name": "identity",
+            "type": "Microsoft.ManagedIdentity.IdentitySelector",
+            "label": "Managed Identity Configuration",
+            "toolTip": {
+              "systemAssignedIdentity": "Enable system assigned identity to grant the resource access to other existing resources.",
+              "userAssignedIdentity": "Add user assigned identities to grant the resource access to other existing resources."
+            },
+            "defaultValue": {
+              "systemAssignedIdentity": "Off"
+            },
+            "options": {
+              "hideSystemAssignedIdentity": false,
+              "hideUserAssignedIdentity": false
+            },
+            "visible": true
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "location": "[location()]",
+      "vmName": "[steps('deploymentDetails').virtualMachine.vmName]",
+      "adminPassword": "[steps('deploymentDetails').virtualMachine.vmPassword.password]",
+      "virtualNetworkName": "[steps('deploymentDetails').vnet.name]",
+      "virtualNetworkNewOrExisting": "[steps('deploymentDetails').vnet.newOrExisting]",
+      "virtualNetworkAddressPrefix": "[first(steps('deploymentDetails').vnet.addressPrefixes)]",
+      "virtualNetworkResourceGroup": "[steps('deploymentDetails').vnet.resourceGroup]",
+      "virtualMachineSize": "[steps('deploymentDetails').VMSize]",
+      "subnetName": "[steps('deploymentDetails').vnet.subnets.subnet1.name]",
+      "subnetAddressPrefix": "[steps('deploymentDetails').vnet.subnets.subnet1.addressPrefix]",
+      "managedIdentity": "[steps('identityDetails').identity]"
+    }
+  }
+}

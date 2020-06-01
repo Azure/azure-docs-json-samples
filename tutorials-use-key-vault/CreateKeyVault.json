@@ -1,5 +1,5 @@
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "keyVaultName": {
@@ -14,22 +14,22 @@
       "defaultValue": "[subscription().tenantId]"
     },
     "adUserId": {
-      "type": "string",
+      "type": "string"
     },
     "secretName": {
       "type": "string",
       "defaultValue": "vmAdminPassword"
     },
     "secretValue": {
-      "type": "securestring",
+      "type": "securestring"
     }
   },
   "resources": [
     {
       "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2019-09-01",
       "name": "[parameters('keyVaultName')]",
       "location": "[parameters('location')]",
-      "apiVersion": "2018-02-14",
       "properties": {
         "enabledForDeployment": false,
         "enabledForTemplateDeployment": true,
@@ -88,9 +88,9 @@
     },
     {
       "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2019-09-01",
       "name": "[concat(parameters('keyVaultName'), '/', parameters('secretName'))]",
-      "apiVersion": "2016-10-01",
-      "location": "centralus",
+      "location": "[parameters('location')]",
       "scale": null,
       "dependsOn": [
         "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]"

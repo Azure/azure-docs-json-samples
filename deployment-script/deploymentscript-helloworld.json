@@ -7,7 +7,7 @@
     },
     "name":{
       "type": "string",
-      "defaultValue": "'John Dole'"
+      "defaultValue": "\\\"John Dole\\\""
     },
     "utcValue": {
       "type": "string",

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "identity": {
+      "type": "string"
+    },
+    "tables": {
+      "type": "object",
+      "defaultValue": {
+        "abc": [
+          {
+            "partitionKey": "emotion",
+            "rowKey": "happy",
+            "blah": "asdf",
+            "test": 5
+          },
+          {
+            "partitionKey": "emotion",
+            "rowKey": "angry",
+            "blah": "bdfae",
+            "test": 221,
+            "another": "testing"
+          }
+        ],
+        "def": [
+          {
+            "partitionKey": "emotion",
+            "rowKey": "sad",
+            "blah": "jiuo",
+            "test": 2
+          }
+        ],
+        "ghi": [
+        ]
+      }
+    }
+  },
+  "variables": {
+    "apostrophe": "'"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deploymentScripts",
+      "apiVersion": "2019-10-01-preview",
+      "name": "runPowerShellInline",
+      "location": "[resourceGroup().location]",
+      "kind": "AzurePowerShell",
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[parameters('identity')]": {
+          }
+        }
+      },
+      "properties": {
+        "forceUpdateTag": 1,
+        "azPowerShellVersion": "4.2",
+        "arguments": "[concat('-tables ', concat(variables('apostrophe'), replace(string(parameters('tables')), '\"', '\\\"'), variables('apostrophe')))]",
+        "scriptContent": "
+          param([string] $tables)
+          ConvertFrom-Json $tables -AsHashtable | ConvertTo-Json -Depth 5 -Compress | Write-Host
+        ",
+        "supportingScriptUris": [],
+        "timeout": "PT30M",
+        "cleanupPreference": "OnSuccess",
+        "retentionInterval": "P1D"
+      }
+    }
+  ],
+  "outputs": {
+  }
+}

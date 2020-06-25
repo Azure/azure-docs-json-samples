@@ -56,7 +56,7 @@
       "properties": {
         "forceUpdateTag": 1,
         "azPowerShellVersion": "4.2",
-        "arguments": "[concat('-tables ', concat(variables('apostrophe'), replace(string(parameters('tables')), '\"', '\\\"'), variables('apostrophe')))]",
+        "arguments": "[concat('-tables', ' ', concat(variables('apostrophe'), replace(string(parameters('tables')), '\"', '\\\"'), variables('apostrophe')))]",
         "scriptContent": "
           param([string] $tables)
           ConvertFrom-Json $tables -AsHashtable | ConvertTo-Json -Depth 5 -Compress | Write-Host

@@ -31,7 +31,7 @@
         "forceUpdateTag": "[parameters('utcValue')]",
         "azPowerShellVersion": "3.0",
         "timeout": "PT1H",
-        "arguments": "[concat('-name ', parameters('name'))]",
+        "arguments": "[concat('-name', ' ', parameters('name'))]",
         "scriptContent": "
           param([string] $name)
           $output = 'Hello {0}' -f $name
@@ -63,7 +63,7 @@
         "forceUpdateTag": "[parameters('utcValue')]",
         "azPowerShellVersion": "3.0",
         "timeout": "PT1H",
-        "arguments": "[concat('-textToEcho ', reference('scriptInTemplate1').outputs.text)]",
+        "arguments": "[concat('-textToEcho', ' ', reference('scriptInTemplate1').outputs.text)]",
         "scriptContent": "
           param([string] $textToEcho)
           Write-Output $textToEcho

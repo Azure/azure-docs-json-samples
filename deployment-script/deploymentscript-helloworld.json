@@ -38,7 +38,7 @@
           $DeploymentScriptOutputs = @{}
           $DeploymentScriptOutputs['text'] = $output
         ",
-        "arguments": "[concat('-name ', parameters('name'))]",
+        "arguments": "[concat('-name', ' ', parameters('name'))]",
         "timeout": "PT1H",
         "cleanupPreference": "OnSuccess",
         "retentionInterval": "P1D"

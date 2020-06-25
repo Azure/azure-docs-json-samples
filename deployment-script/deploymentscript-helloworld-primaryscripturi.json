@@ -32,7 +32,7 @@
         "forceUpdateTag": "[parameters('utcValue')]",
         "azPowerShellVersion": "3.0",
         "timeout": "PT1H",
-        "arguments": "[concat('-name ', parameters('name'))]",
+        "arguments": "[concat('-name', ' ', parameters('name'))]",
         "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
         "cleanupPreference": "OnSuccess",
         "retentionInterval": "P1D"

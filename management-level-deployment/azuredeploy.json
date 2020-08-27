@@ -88,7 +88,7 @@
               "type": "Microsoft.Resources/resourceGroups",
               "apiVersion": "2019-10-01",
               "name": "[parameters('nestedRG')]",
-              "location": "[parameters('location')]",
+              "location": "[parameters('location')]"
             },
             {
               "type": "Microsoft.Resources/deployments",

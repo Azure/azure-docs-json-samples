@@ -35,7 +35,7 @@
         "arguments": "[concat('-name', ' ', parameters('name'))]",
         "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
         "cleanupPreference": "OnSuccess",
-        "retentionInterval": "P1D"
+        "retentionInterval": "PT25H"
       }
     }
   ],

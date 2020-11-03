@@ -259,7 +259,7 @@
           }
         ",
         "cleanupPreference": "OnSuccess",
-        "retentionInterval": "P1D"
+        "retentionInterval": "PT25H"
       }
     }
   ]

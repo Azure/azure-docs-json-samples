@@ -17,7 +17,7 @@
     "azPowerShellVersion": "3.0",
     "scriptContent": "\n          param([string] $name)\n          $output = 'Hello {0}' -f $name\n          Write-Output $output\n          $DeploymentScriptOutputs = @{}\n          $DeploymentScriptOutputs['text'] = $output\n        ",
     "arguments": "-name 'John Dole'",
-    "retentionInterval": "P1D",
+    "retentionInterval": "PT25H",
     "timeout": "PT1H",
     "containerSettings": {},
     "status": {

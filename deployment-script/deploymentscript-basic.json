@@ -40,7 +40,7 @@
           $DeploymentScriptOutputs['text'] = $output
         ",
         "cleanupPreference": "Always",
-        "retentionInterval": "PT25H"
+        "retentionInterval": "P1D"
       }
     },
     {
@@ -71,7 +71,7 @@
           $DeploymentScriptOutputs['text'] = $textToEcho
         ",
         "cleanupPreference": "Always",
-        "retentionInterval": "PT25H"
+        "retentionInterval": "P1D"
       }
     }
   ],

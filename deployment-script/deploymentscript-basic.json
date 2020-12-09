@@ -2,11 +2,9 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "identity": {
-      "type": "string"
-    },
     "name":{
-      "type":"string"
+      "type":"string",
+      "defaultValue": "John Dole"
     },
     "utcValue": {
       "type": "string",
@@ -16,22 +14,15 @@
   "resources": [
     {
       "type": "Microsoft.Resources/deploymentScripts",
-      "apiVersion": "2019-10-01-preview",
+      "apiVersion": "2020-10-01",
       "name": "scriptInTemplate1",
       "location": "[resourceGroup().location]",
       "kind": "AzurePowerShell",
-      "identity": {
-        "type": "userAssigned",
-        "userAssignedIdentities": {
-          "[parameters('identity')]": {
-          }
-        }
-      },
       "properties": {
         "forceUpdateTag": "[parameters('utcValue')]",
         "azPowerShellVersion": "3.0",
         "timeout": "PT1H",
-        "arguments": "[concat('-name', ' ', parameters('name'))]",
+        "arguments": "[concat('-name', ' ', concat('\\\"', parameters('name'), '\\\"'))]",
         "scriptContent": "
           param([string] $name)
           $output = 'Hello {0}' -f $name
@@ -45,17 +36,10 @@
     },
     {
       "type": "Microsoft.Resources/deploymentScripts",
-      "apiVersion": "2019-10-01-preview",
+      "apiVersion": "2020-10-01",
       "name": "scriptInTemplate2",
       "location": "[resourceGroup().location]",
       "kind": "AzurePowerShell",
-      "identity": {
-        "type": "userAssigned",
-        "userAssignedIdentities": {
-          "[parameters('identity')]": {
-          }
-        }
-      },
       "dependsOn": [
         "scriptInTemplate1"
       ],
@@ -63,12 +47,13 @@
         "forceUpdateTag": "[parameters('utcValue')]",
         "azPowerShellVersion": "3.0",
         "timeout": "PT1H",
-        "arguments": "[concat('-textToEcho', ' ', reference('scriptInTemplate1').outputs.text)]",
+        "arguments": "[concat('-textToEcho', ' ', concat('\\\"', reference('scriptInTemplate1').outputs.text, '\\\"'))]",
         "scriptContent": "
           param([string] $textToEcho)
           Write-Output $textToEcho
           $DeploymentScriptOutputs = @{}
           $DeploymentScriptOutputs['text'] = $textToEcho
+          Start-Sleep -s 300
         ",
         "cleanupPreference": "Always",
         "retentionInterval": "P1D"

@@ -2,9 +2,6 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "identity": {
-      "type": "string"
-    },
     "tables": {
       "type": "object",
       "defaultValue": {
@@ -42,17 +39,10 @@
   "resources": [
     {
       "type": "Microsoft.Resources/deploymentScripts",
-      "apiVersion": "2019-10-01-preview",
+      "apiVersion": "2020-10-01",
       "name": "runPowerShellInline",
       "location": "[resourceGroup().location]",
       "kind": "AzurePowerShell",
-      "identity": {
-        "type": "UserAssigned",
-        "userAssignedIdentities": {
-          "[parameters('identity')]": {
-          }
-        }
-      },
       "properties": {
         "forceUpdateTag": 1,
         "azPowerShellVersion": "4.2",

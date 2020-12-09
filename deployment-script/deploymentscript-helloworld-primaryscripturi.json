@@ -2,9 +2,6 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "identity": {
-      "type": "string"
-    },
     "name":{
       "type": "string",
       "defaultValue": "\\\"John Dole\\\""
@@ -21,16 +18,9 @@
       "name": "scriptInTemplate1",
       "location": "[resourceGroup().location]",
       "kind": "AzurePowerShell",
-      "identity": {
-        "type": "userAssigned",
-        "userAssignedIdentities": {
-          "[parameters('identity')]": {
-          }
-        }
-      },
       "properties": {
         "forceUpdateTag": "[parameters('utcValue')]",
-        "azPowerShellVersion": "3.0",
+        "azPowerShellVersion": "5.0",
         "timeout": "PT1H",
         "arguments": "[concat('-name', ' ', parameters('name'))]",
         "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",

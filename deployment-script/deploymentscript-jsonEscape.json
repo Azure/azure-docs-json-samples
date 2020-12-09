@@ -45,7 +45,7 @@
       "kind": "AzurePowerShell",
       "properties": {
         "forceUpdateTag": 1,
-        "azPowerShellVersion": "4.2",
+        "azPowerShellVersion": "5.0",
         "arguments": "[concat('-tables', ' ', concat(variables('apostrophe'), replace(string(parameters('tables')), '\"', '\\\"'), variables('apostrophe')))]",
         "scriptContent": "
           param([string] $tables)

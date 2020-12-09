@@ -20,7 +20,7 @@
       "kind": "AzurePowerShell",
       "properties": {
         "forceUpdateTag": "[parameters('utcValue')]",
-        "azPowerShellVersion": "3.0",
+        "azPowerShellVersion": "5.0",
         "timeout": "PT1H",
         "arguments": "[concat('-name', ' ', concat('\\\"', parameters('name'), '\\\"'))]",
         "scriptContent": "
@@ -45,7 +45,7 @@
       ],
       "properties": {
         "forceUpdateTag": "[parameters('utcValue')]",
-        "azPowerShellVersion": "3.0",
+        "azPowerShellVersion": "5.0",
         "timeout": "PT1H",
         "arguments": "[concat('-textToEcho', ' ', concat('\\\"', reference('scriptInTemplate1').outputs.text, '\\\"'))]",
         "scriptContent": "
@@ -53,7 +53,6 @@
           Write-Output $textToEcho
           $DeploymentScriptOutputs = @{}
           $DeploymentScriptOutputs['text'] = $textToEcho
-          Start-Sleep -s 300
         ",
         "cleanupPreference": "Always",
         "retentionInterval": "P1D"

@@ -1,21 +1,27 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
+    "parameters": {
+        "inputValue": {
+            "type": "string",
+            "defaultValue": "deployment parameter"
+        }
+    },
     "variables": {
         "var1": "myVariable",
-        "var2": [
+        "var2": "[concat(variables('var1'), '-next') ]",
+        "var3": "[concat(parameters('inputValue'), '-fromparam')]",
+        "var4": [
             1,
             2,
             3,
             4
         ],
-        "var3": "[ variables('var1') ]",
-        "var4": {
+        "var5": {
             "property1": "value1",
             "property2": "value2"
         },
-        "var5": {
+        "var6": {
             "copy": [
                 {
                     "name": "disks",
@@ -35,32 +41,32 @@
         },
         "copy": [
             {
-                "name": "var6",
+                "name": "var7",
                 "count": 5,
                 "input": {
-                    "name": "[concat('oneDataDisk', copyIndex('var6', 1))]",
-                    "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('var6')]"
-                }
-            },
-            {
-                "name": "var7",
-                "count": 3,
-                "input": {
-                    "name": "[concat('twoDataDisk', copyIndex('var7', 1))]",
+                    "name": "[concat('oneDataDisk', copyIndex('var7', 1))]",
                     "diskSizeGB": "1",
                     "diskIndex": "[copyIndex('var7')]"
                 }
             },
             {
                 "name": "var8",
-                "count": 4,
-                "input": "[concat('stringValue', copyIndex('var8'))]"
+                "count": 3,
+                "input": {
+                    "name": "[concat('twoDataDisk', copyIndex('var8', 1))]",
+                    "diskSizeGB": "1",
+                    "diskIndex": "[copyIndex('var8')]"
+                }
             },
             {
                 "name": "var9",
                 "count": 4,
-                "input": "[copyIndex('var9')]"
+                "input": "[concat('stringValue', copyIndex('var9'))]"
+            },
+            {
+                "name": "var10",
+                "count": 4,
+                "input": "[copyIndex('var10')]"
             }
         ]
     },
@@ -72,7 +78,7 @@
         },
         "exampleOutput2": {
             "value": "[variables('var2')]",
-            "type": "array"
+            "type": "string"
         },
         "exampleOutput3": {
             "value": "[variables('var3')]",
@@ -80,14 +86,14 @@
         },
         "exampleOutput4": {
             "value": "[variables('var4')]",
-            "type": "object"
+            "type": "array"
         },
         "exampleOutput5": {
             "type": "object",
             "value": "[variables('var5')]"
         },
         "exampleOutput6": {
-            "type": "array",
+            "type": "object",
             "value": "[variables('var6')]"
         },
         "exampleOutput7": {
@@ -101,6 +107,10 @@
         "exampleOutput9": {
             "type": "array",
             "value": "[variables('var9')]"
+        },
+        "exampleOutput10": {
+            "type": "array",
+            "value": "[variables('var10')]"
         }
     }
 }

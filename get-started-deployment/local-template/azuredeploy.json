@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "projectName": {
@@ -50,7 +50,7 @@
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
+      "apiVersion": "2019-06-01",
       "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -63,7 +63,7 @@
     },
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2016-09-01",
+      "apiVersion": "2020-09-01",
       "name": "[variables('appServicePlanName')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -83,7 +83,7 @@
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2018-11-01",
+      "apiVersion": "2020-09-01",
       "name": "[variables('webAppName')]",
       "location": "[parameters('location')]",
       "dependsOn": [

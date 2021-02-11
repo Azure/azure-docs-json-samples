@@ -1,27 +1,27 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "inputValue": {
-            "type": "string",
-            "defaultValue": "deployment parameter"
+            "defaultValue": "deployment parameter",
+            "type": "string"
         }
     },
     "variables": {
-        "var1": "myVariable",
-        "var2": "[concat(variables('var1'), '-next') ]",
-        "var3": "[concat(parameters('inputValue'), '-fromparam')]",
-        "var4": [
+        "stringVar": "myVariable",
+        "concatToVar": "[concat(variables('stringVar'), '-addtovar') ]",
+        "concatToParam": "[concat(parameters('inputValue'), '-addtoparam')]",
+        "arrayVar": [
             1,
             2,
             3,
             4
         ],
-        "var5": {
+        "objectVar": {
             "property1": "value1",
             "property2": "value2"
         },
-        "var6": {
+        "copyWithinVar": {
             "copy": [
                 {
                     "name": "disks",
@@ -41,76 +41,76 @@
         },
         "copy": [
             {
-                "name": "var7",
+                "name": "topLevelCopy1",
                 "count": 5,
                 "input": {
-                    "name": "[concat('oneDataDisk', copyIndex('var7', 1))]",
+                    "name": "[concat('oneDataDisk', copyIndex('topLevelCopy1', 1))]",
                     "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('var7')]"
+                    "diskIndex": "[copyIndex('topLevelCopy1')]"
                 }
             },
             {
-                "name": "var8",
+                "name": "topLevelCopy2",
                 "count": 3,
                 "input": {
-                    "name": "[concat('twoDataDisk', copyIndex('var8', 1))]",
+                    "name": "[concat('twoDataDisk', copyIndex('topLevelCopy2', 1))]",
                     "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('var8')]"
+                    "diskIndex": "[copyIndex('topLevelCopy2')]"
                 }
             },
             {
-                "name": "var9",
+                "name": "topLevelCopy3",
                 "count": 4,
-                "input": "[concat('stringValue', copyIndex('var9'))]"
+                "input": "[concat('stringValue', copyIndex('topLevelCopy3'))]"
             },
             {
-                "name": "var10",
+                "name": "topLevelCopy4",
                 "count": 4,
-                "input": "[copyIndex('var10')]"
+                "input": "[copyIndex('topLevelCopy4')]"
             }
         ]
     },
     "resources": [],
     "outputs": {
-        "exampleOutput1": {
-            "value": "[variables('var1')]",
-            "type": "string"
+        "stringOutput": {
+            "type": "string",
+            "value": "[variables('stringVar')]"
         },
-        "exampleOutput2": {
-            "value": "[variables('var2')]",
-            "type": "string"
+        "concatToVariableOutput": {
+            "type": "string",
+            "value": "[variables('concatToVar')]"
         },
-        "exampleOutput3": {
-            "value": "[variables('var3')]",
-            "type": "string"
+        "concatToParameterOutput": {
+            "type": "string",
+            "value": "[variables('concatToParam')]"
         },
-        "exampleOutput4": {
-            "value": "[variables('var4')]",
-            "type": "array"
+        "arrayOutput": {
+            "type": "array",
+            "value": "[variables('arrayVar')]"
         },
-        "exampleOutput5": {
+        "objectOutput": {
             "type": "object",
-            "value": "[variables('var5')]"
+            "value": "[variables('objectVar')]"
         },
-        "exampleOutput6": {
+        "copyWithinVariableOutput": {
             "type": "object",
-            "value": "[variables('var6')]"
+            "value": "[variables('copyWithinVar')]"
         },
-        "exampleOutput7": {
+        "topLevelCopyOutput1": {
             "type": "array",
-            "value": "[variables('var7')]"
+            "value": "[variables('topLevelCopy1')]"
         },
-        "exampleOutput8": {
+        "topLevelCopyOutput2": {
             "type": "array",
-            "value": "[variables('var8')]"
+            "value": "[variables('topLevelCopy2')]"
         },
-        "exampleOutput9": {
+        "topLevelCopyOutput3": {
             "type": "array",
-            "value": "[variables('var9')]"
+            "value": "[variables('topLevelCopy3')]"
         },
-        "exampleOutput10": {
+        "topLevelCopyOutput4": {
             "type": "array",
-            "value": "[variables('var10')]"
+            "value": "[variables('topLevelCopy4')]"
         }
     }
 }

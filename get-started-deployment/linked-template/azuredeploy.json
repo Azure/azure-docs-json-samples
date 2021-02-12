@@ -23,12 +23,6 @@
       "metadata": {
         "description": "The Runtime stack of current web app"
       }
-    },
-    "linkedTemplateUri": {
-      "type": "string",
-      "metadata": {
-        "description": "The Uri of the linked template."
-      }
     }
   },
   "variables": {
@@ -44,7 +38,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[parameters('linkedTemplateUri')]"
+          "relativePath": "linkedStorageAccount.json"
         },
         "parameters": {
           "storageAccountName": {

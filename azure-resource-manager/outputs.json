@@ -21,7 +21,7 @@
         },
         "objectOutput": {
             "type": "object",
-            "value": "[deployment()]"
+            "value": "[subscription()]"
         }
     }
 }

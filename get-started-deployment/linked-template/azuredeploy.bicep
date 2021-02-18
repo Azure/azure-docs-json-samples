@@ -11,43 +11,24 @@ param location string {
   }
   default: resourceGroup().location
 }
-param storageSKU string {
-  allowed: [
-    'Standard_LRS'
-    'Standard_GRS'
-    'Standard_RAGRS'
-    'Standard_ZRS'
-    'Premium_LRS'
-    'Premium_ZRS'
-    'Standard_GZRS'
-    'Standard_RAGZRS'
-  ]
-  metadata: {
-    description: 'Specify the storage account type.'
-  }
-  default: 'Standard_LRS'
-}
 param linuxFxVersion string {
   metadata: {
     description: 'Specify the Runtime stack of current web app'
   }
   default: 'php|7.0'
 }
-
+param linkedTemplateUri string{
+  metadata: {
+    description: 'The Uri of the linked template.'
+  }
+}
 var storageAccountName_var = concat(projectName, uniqueString(resourceGroup().id))
 var webAppName_var = '${projectName}WebApp'
 var appServicePlanName_var = '${projectName}Plan'
 
-resource storageAccountName 'Microsoft.Storage/storageAccounts@2019-06-01' = {
-  name: storageAccountName_var
-  location: location
-  sku: {
-    name: storageSKU
-  }
-  kind: 'StorageV2'
-  properties: {
-    supportsHttpsTrafficOnly: true
-  }
+resource linkedTemplate 'Microsoft.Resources/deployments@2018-05-01' = {
+  name: linkedTemplateUri
+
 }
 
 resource appServicePlanName 'Microsoft.Web/serverfarms@2020-09-01' = {

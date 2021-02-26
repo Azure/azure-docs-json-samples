@@ -17,7 +17,7 @@ param storageSKU string {
 }
 param location string = resourceGroup().location
 
-resource storageName_resource 'Microsoft.Storage/storageAccounts@2019-04-01' = {
+resource stg 'Microsoft.Storage/storageAccounts@2019-04-01' = {
   name: storageName
   location: location
   sku: {

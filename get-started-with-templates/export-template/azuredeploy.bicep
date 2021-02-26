@@ -18,10 +18,10 @@ param storageSKU string {
 param location string = resourceGroup().location
 param appServicePlanName string = 'exampleplan'
 
-var uniqueStorageName_var = concat(storagePrefix, uniqueString(resourceGroup().id))
+var uniqueStorageName = concat(storagePrefix, uniqueString(resourceGroup().id))
 
-resource uniqueStorageName 'Microsoft.Storage/storageAccounts@2019-04-01' = {
-  name: uniqueStorageName_var
+resource stg 'Microsoft.Storage/storageAccounts@2019-04-01' = {
+  name: uniqueStorageName
   location: location
   sku: {
     name: storageSKU
@@ -32,7 +32,7 @@ resource uniqueStorageName 'Microsoft.Storage/storageAccounts@2019-04-01' = {
   }
 }
 
-resource appServicePlanName_resource 'Microsoft.Web/serverfarms@2016-09-01' = {
+resource appPlan 'Microsoft.Web/serverfarms@2016-09-01' = {
   name: appServicePlanName
   location: location
   sku: {
@@ -51,4 +51,4 @@ resource appServicePlanName_resource 'Microsoft.Web/serverfarms@2016-09-01' = {
   }
 }
 
-output storageEndpoint object = reference(uniqueStorageName_var).primaryEndpoints
+output storageEndpoint object = reference(uniqueStorageName).primaryEndpoints

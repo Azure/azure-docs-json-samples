@@ -30,11 +30,11 @@ param linuxFxVersion string {
   default: 'php|7.0'
 }
 
-var uniqueStorageName_var = concat(storagePrefix, uniqueString(resourceGroup().id))
-var webAppPortalName_var = concat(webAppName, uniqueString(resourceGroup().id))
+var uniqueStorageName = concat(storagePrefix, uniqueString(resourceGroup().id))
+var webAppPortalName = concat(webAppName, uniqueString(resourceGroup().id))
 
-resource uniqueStorageName 'Microsoft.Storage/storageAccounts@2019-04-01' = {
-  name: uniqueStorageName_var
+resource stg 'Microsoft.Storage/storageAccounts@2019-04-01' = {
+  name: uniqueStorageName
   location: location
   sku: {
     name: storageSKU
@@ -45,7 +45,7 @@ resource uniqueStorageName 'Microsoft.Storage/storageAccounts@2019-04-01' = {
   }
 }
 
-resource appServicePlanName_resource 'Microsoft.Web/serverfarms@2016-09-01' = {
+resource appPlan 'Microsoft.Web/serverfarms@2016-09-01' = {
   name: appServicePlanName
   location: location
   sku: {
@@ -64,16 +64,16 @@ resource appServicePlanName_resource 'Microsoft.Web/serverfarms@2016-09-01' = {
   }
 }
 
-resource webAppPortalName 'Microsoft.Web/sites@2018-11-01' = {
-  name: webAppPortalName_var
+resource site 'Microsoft.Web/sites@2020-06-01' = {
+  name: webAppPortalName
   location: location
   kind: 'app'
   properties: {
-    serverFarmId: appServicePlanName_resource.id
+    serverFarmId: appPlan.id
     siteConfig: {
       linuxFxVersion: linuxFxVersion
     }
   }
 }
 
-output storageEndpoint object = reference(uniqueStorageName_var).primaryEndpoints
+output storageEndpoint object = reference(uniqueStorageName).primaryEndpoints

@@ -17,10 +17,10 @@ param storageSKU string {
 }
 param location string = resourceGroup().location
 
-var uniqueStorageName_var = concat(storagePrefix, uniqueString(resourceGroup().id))
+var uniqueStorageName = concat(storagePrefix, uniqueString(resourceGroup().id))
 
-resource uniqueStorageName 'Microsoft.Storage/storageAccounts@2019-04-01' = {
-  name: uniqueStorageName_var
+resource stg 'Microsoft.Storage/storageAccounts@2019-04-01' = {
+  name: uniqueStorageName
   location: location
   sku: {
     name: storageSKU

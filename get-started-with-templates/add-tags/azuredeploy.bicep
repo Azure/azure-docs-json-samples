@@ -34,11 +34,11 @@ param resourceTags object = {
   Project: 'Tutorial'
 }
 
-var uniqueStorageName_var = concat(storagePrefix, uniqueString(resourceGroup().id))
-var webAppPortalName_var = concat(webAppName, uniqueString(resourceGroup().id))
+var uniqueStorageName = concat(storagePrefix, uniqueString(resourceGroup().id))
+var webAppPortalName = concat(webAppName, uniqueString(resourceGroup().id))
 
-resource uniqueStorageName 'Microsoft.Storage/storageAccounts@2019-04-01' = {
-  name: uniqueStorageName_var
+resource stg 'Microsoft.Storage/storageAccounts@2019-04-01' = {
+  name: uniqueStorageName
   location: location
   tags: resourceTags
   sku: {
@@ -50,7 +50,7 @@ resource uniqueStorageName 'Microsoft.Storage/storageAccounts@2019-04-01' = {
   }
 }
 
-resource appServicePlanName_resource 'Microsoft.Web/serverfarms@2016-09-01' = {
+resource appPlan 'Microsoft.Web/serverfarms@2016-09-01' = {
   name: appServicePlanName
   location: location
   tags: resourceTags
@@ -70,17 +70,17 @@ resource appServicePlanName_resource 'Microsoft.Web/serverfarms@2016-09-01' = {
   }
 }
 
-resource webAppPortalName 'Microsoft.Web/sites@2016-08-01' = {
-  name: webAppPortalName_var
+resource site 'Microsoft.Web/sites@2016-08-01' = {
+  name: webAppPortalName
   location: location
   tags: resourceTags
   kind: 'app'
   properties: {
-    serverFarmId: appServicePlanName_resource.id
+    serverFarmId: appPlan.id
     siteConfig: {
       linuxFxVersion: linuxFxVersion
     }
   }
 }
 
-output storageEndpoint object = reference(uniqueStorageName_var).primaryEndpoints
+output storageEndpoint object = reference(uniqueStorageName).primaryEndpoints

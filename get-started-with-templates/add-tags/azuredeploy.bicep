@@ -34,8 +34,8 @@ param resourceTags object = {
   Project: 'Tutorial'
 }
 
-var uniqueStorageName = concat(storagePrefix, uniqueString(resourceGroup().id))
-var webAppPortalName = concat(webAppName, uniqueString(resourceGroup().id))
+var uniqueStorageName = '${storagePrefix}${uniqueString(resourceGroup().id)}'
+var webAppPortalName = '${webAppName}${uniqueString(resourceGroup().id)}'
 
 resource stg 'Microsoft.Storage/storageAccounts@2019-04-01' = {
   name: uniqueStorageName

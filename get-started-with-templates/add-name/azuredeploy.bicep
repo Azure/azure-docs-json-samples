@@ -1,7 +1,6 @@
-
 @minLength(3)
 @maxLength(24)
-param storageName string 
+param storageName string
 
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName

@@ -1,20 +1,19 @@
-param storagePrefix string {
-  minLength: 3
-  maxLength: 11
-}
-param storageSKU string {
-  allowed: [
-    'Standard_LRS'
-    'Standard_GRS'
-    'Standard_RAGRS'
-    'Standard_ZRS'
-    'Premium_LRS'
-    'Premium_ZRS'
-    'Standard_GZRS'
-    'Standard_RAGZRS'
-  ]
-  default: 'Standard_LRS'
-}
+@minLength(3)
+@maxLength(11)
+param storagePrefix string
+
+@allowed([
+  'Standard_LRS'
+  'Standard_GRS'
+  'Standard_RAGRS'
+  'Standard_ZRS'
+  'Premium_LRS'
+  'Premium_ZRS'
+  'Standard_GZRS'
+  'Standard_RAGZRS'
+])
+param storageSKU string = 'Standard_LRS'
+
 param location string = resourceGroup().location
 param appServicePlanName string = 'exampleplan'
 

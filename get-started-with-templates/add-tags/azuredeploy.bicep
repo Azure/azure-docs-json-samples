@@ -16,18 +16,14 @@ param storageSKU string = 'Standard_LRS'
 
 param location string = resourceGroup().location
 param appServicePlanName string = 'exampleplan'
-param webAppName string {
-  minLength: 2
-  metadata: {
-    description: 'Base name of the resource such as web app name and app service plan '
-  }
-}
-param linuxFxVersion string {
-  metadata: {
-    description: 'The Runtime stack of current web app'
-  }
-  default: 'php|7.0'
-}
+
+@minLength(2)
+@description('Base name of the resource such as web app name and app service plan.')
+param webAppName string
+
+@description('The Runtime stack of current web app.')
+param linuxFxVersion string = 'php|7.0'
+
 param resourceTags object = {
   Environment: 'Dev'
   Project: 'Tutorial'

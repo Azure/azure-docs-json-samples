@@ -83,4 +83,4 @@ resource site 'Microsoft.Web/sites@2016-08-01' = {
   }
 }
 
-output storageEndpoint object = reference(uniqueStorageName).primaryEndpoints
+output storageEndpoint object = stg.properties.primaryEndpoints

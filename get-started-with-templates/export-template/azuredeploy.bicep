@@ -51,4 +51,4 @@ resource appPlan 'Microsoft.Web/serverfarms@2016-09-01' = {
   }
 }
 
-output storageEndpoint object = reference(uniqueStorageName).primaryEndpoints
+output storageEndpoint object = stg.properties.primaryEndpoints

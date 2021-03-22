@@ -127,15 +127,15 @@
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "name": "[variables('resourceGroupName')]",
       "location": "[parameters('location')]",
       "properties": {}
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
-      "name": "storageDeployment",
+      "apiVersion": "2020-06-01",
+      "name": "KeyVaultDeployment",
       "resourceGroup": "[variables('resourceGroupName')]",
       "dependsOn": [
         "[resourceId('Microsoft.Resources/resourceGroups/', variables('resourceGroupName'))]"
@@ -151,7 +151,7 @@
             {
               "type": "Microsoft.KeyVault/vaults",
               "name": "[variables('keyVaultName')]",
-              "apiVersion": "2018-02-14",
+              "apiVersion": "2019-09-01",
               "location": "[parameters('location')]",
               "properties": {
                 "enabledForDeployment": "[parameters('enabledForDeployment')]",
@@ -194,7 +194,7 @@
               "name": "createAddCertificate",
               "location": "[parameters('location')]",
               "dependsOn": [
-                "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+                "[variables('keyVaultName')]"
               ],
               "identity": {
                 "type": "UserAssigned",

@@ -1,7 +1,7 @@
 @description('An array that contains objects with properties for the security rules. For format, see multiplesecurityrules.parameters.json.')
 param securityRules array
 
-var securityRules_var = [for item in securityRules: {
+var securityRulesVar = [for item in securityRules: {
   name: item.name
   properties: {
     description: item.description
@@ -16,10 +16,10 @@ var securityRules_var = [for item in securityRules: {
   }
 }]
 
-resource NSG1 'Microsoft.Network/networkSecurityGroups@2020-07-01' = {
+resource netSG 'Microsoft.Network/networkSecurityGroups@2020-11-01' = {
   name: 'NSG1'
   location: resourceGroup().location
   properties: {
-    securityRules: securityRules_var
+    securityRules: securityRulesVar
   }
 }

@@ -1,29 +1,36 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageCount": {
-            "type": "int",
-            "defaultValue": 3,
-            "maxValue": 6
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageCount": {
+      "type": "int",
+      "defaultValue": 3,
+      "maxValue": 6
     },
-    "resources": [
-        {
-            "apiVersion": "2017-06-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {},
-            "copy": {
-                "name": "storagecopy",
-                "count": "[parameters('storageCount')]"
-            }
-        }
-    ],
-    "outputs": {}
+    "rgLocation": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Resource group location."
+      }
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2021-02-01",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('rgLocation')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "properties": {},
+      "copy": {
+        "name": "storagecopy",
+        "count": "[parameters('storageCount')]"
+      }
+    }
+  ],
+  "outputs": {}
 }

@@ -4,9 +4,11 @@ param org array = [
   'coho'
 ]
 
+param rgLocation string = resourceGroup().location
+
 resource storageAcct 'Microsoft.Storage/storageAccounts@2021-02-01' = [for item in org: {
   name: '${item}${uniqueString(resourceGroup().id)}'
-  location: resourceGroup().location
+  location: rgLocation
   sku: {
     name: 'Standard_LRS'
   }

@@ -4,7 +4,7 @@ param org array = [
   'coho'
 ]
 
-resource org_id 'Microsoft.Storage/storageAccounts@2021-02-01' = [for item in org: {
+resource storageAcct 'Microsoft.Storage/storageAccounts@2021-02-01' = [for item in org: {
   name: '${item}${uniqueString(resourceGroup().id)}'
   location: resourceGroup().location
   sku: {

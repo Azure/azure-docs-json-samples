@@ -1,9 +1,8 @@
-param environmentName string {
-  allowed: [
-    'test'
-    'prod'
-  ]
-}
+@allowed([
+  'test'
+  'prod'
+])
+param environmentName string
 
 var environmentSettings = {
   test: {

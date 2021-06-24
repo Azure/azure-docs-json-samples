@@ -1,39 +1,39 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "environmentName": {
-            "type": "string",
-            "allowedValues": [
-              "test",
-              "prod"
-            ],
-            "metadata": {
-                "description": "Specify either test or prod for configuration values."
-            }
-        }
-    },
-    "variables": {
-        "environmentSettings": {
-            "test": {
-                "instanceSize": "Small",
-                "instanceCount": 1
-            },
-            "prod": {
-                "instanceSize": "Large",
-                "instanceCount": 4
-            }
-        }
-    },
-    "resources": [],
-    "outputs": {
-        "instanceSize": {
-            "value": "[variables('environmentSettings')[parameters('environmentName')].instanceSize]",
-            "type": "string"
-        },
-        "instanceCount": {
-            "value": "[variables('environmentSettings')[parameters('environmentName')].instanceCount]",
-            "type": "int"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environmentName": {
+      "type": "string",
+      "allowedValues": [
+        "test",
+        "prod"
+      ],
+      "metadata": {
+        "description": "Specify either test or prod for configuration values."
+      }
     }
+  },
+  "variables": {
+    "environmentSettings": {
+      "test": {
+        "instanceSize": "Small",
+        "instanceCount": 1
+      },
+      "prod": {
+        "instanceSize": "Large",
+        "instanceCount": 4
+      }
+    }
+  },
+  "resources": [],
+  "outputs": {
+    "instanceSize": {
+      "value": "[variables('environmentSettings')[parameters('environmentName')].instanceSize]",
+      "type": "string"
+    },
+    "instanceCount": {
+      "value": "[variables('environmentSettings')[parameters('environmentName')].instanceCount]",
+      "type": "int"
+    }
+  }
 }

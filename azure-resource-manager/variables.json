@@ -1,116 +1,120 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "inputValue": {
-            "defaultValue": "deployment parameter",
-            "type": "string"
-        }
-    },
-    "variables": {
-        "stringVar": "myVariable",
-        "concatToVar": "[concat(variables('stringVar'), '-addtovar') ]",
-        "concatToParam": "[concat(parameters('inputValue'), '-addtoparam')]",
-        "arrayVar": [
-            1,
-            2,
-            3,
-            4
-        ],
-        "objectVar": {
-            "property1": "value1",
-            "property2": "value2"
-        },
-        "copyWithinVar": {
-            "copy": [
-                {
-                    "name": "disks",
-                    "count": 5,
-                    "input": {
-                        "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
-                        "diskSizeGB": "1",
-                        "diskIndex": "[copyIndex('disks')]"
-                    }
-                },
-                {
-                    "name": "diskNames",
-                    "count": 5,
-                    "input": "[concat('myDataDisk', copyIndex('diskNames', 1))]"
-                }
-            ]
-        },
-        "copy": [
-            {
-                "name": "topLevelCopy1",
-                "count": 5,
-                "input": {
-                    "name": "[concat('oneDataDisk', copyIndex('topLevelCopy1', 1))]",
-                    "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('topLevelCopy1')]"
-                }
-            },
-            {
-                "name": "topLevelCopy2",
-                "count": 3,
-                "input": {
-                    "name": "[concat('twoDataDisk', copyIndex('topLevelCopy2', 1))]",
-                    "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('topLevelCopy2')]"
-                }
-            },
-            {
-                "name": "topLevelCopy3",
-                "count": 4,
-                "input": "[concat('stringValue', copyIndex('topLevelCopy3'))]"
-            },
-            {
-                "name": "topLevelCopy4",
-                "count": 4,
-                "input": "[copyIndex('topLevelCopy4')]"
-            }
-        ]
-    },
-    "resources": [],
-    "outputs": {
-        "stringOutput": {
-            "type": "string",
-            "value": "[variables('stringVar')]"
-        },
-        "concatToVariableOutput": {
-            "type": "string",
-            "value": "[variables('concatToVar')]"
-        },
-        "concatToParameterOutput": {
-            "type": "string",
-            "value": "[variables('concatToParam')]"
-        },
-        "arrayOutput": {
-            "type": "array",
-            "value": "[variables('arrayVar')]"
-        },
-        "objectOutput": {
-            "type": "object",
-            "value": "[variables('objectVar')]"
-        },
-        "copyWithinVariableOutput": {
-            "type": "object",
-            "value": "[variables('copyWithinVar')]"
-        },
-        "topLevelCopyOutput1": {
-            "type": "array",
-            "value": "[variables('topLevelCopy1')]"
-        },
-        "topLevelCopyOutput2": {
-            "type": "array",
-            "value": "[variables('topLevelCopy2')]"
-        },
-        "topLevelCopyOutput3": {
-            "type": "array",
-            "value": "[variables('topLevelCopy3')]"
-        },
-        "topLevelCopyOutput4": {
-            "type": "array",
-            "value": "[variables('topLevelCopy4')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "inputValue": {
+      "defaultValue": "deployment parameter",
+      "type": "string"
     }
+  },
+  "variables": {
+    "stringVar": "myVariable",
+    "concatToVar": "[concat(variables('stringVar'), '-addtovar') ]",
+    "concatToParam": "[concat(parameters('inputValue'), '-addtoparam')]",
+    "arrayVar": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "objectVar": {
+      "property1": "value1",
+      "property2": "value2"
+    },
+    "copyWithinVar": {
+      "copy": [
+        {
+          "name": "disks",
+          "count": 5,
+          "input": {
+            "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+            "diskSizeGB": "1",
+            "diskIndex": "[copyIndex('disks')]"
+          }
+        },
+        {
+          "name": "diskNames",
+          "count": 5,
+          "input": "[concat('myDataDisk', copyIndex('diskNames', 1))]"
+        }
+      ]
+    },
+    "copy": [
+      {
+        "name": "topLevelCopy1",
+        "count": 5,
+        "input": {
+          "name": "[concat('oneDataDisk', copyIndex('topLevelCopy1', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('topLevelCopy1')]"
+        }
+      },
+      {
+        "name": "topLevelCopy2",
+        "count": 3,
+        "input": {
+          "name": "[concat('twoDataDisk', copyIndex('topLevelCopy2', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('topLevelCopy2')]"
+        }
+      },
+      {
+        "name": "topLevelCopy3",
+        "count": 4,
+        "input": "[concat('stringValue', copyIndex('topLevelCopy3'))]"
+      },
+      {
+        "name": "topLevelCopy4",
+        "count": 4,
+        "input": "[copyIndex('topLevelCopy4')]"
+      }
+    ]
+  },
+  "resources": [],
+  "outputs": {
+    "stringOutput": {
+      "type": "string",
+      "value": "[variables('stringVar')]"
+    },
+    "concatToVariableOutput": {
+      "type": "string",
+      "value": "[variables('concatToVar')]"
+    },
+    "concatToParameterOutput": {
+      "type": "string",
+      "value": "[variables('concatToParam')]"
+    },
+    "arrayOutput": {
+      "type": "array",
+      "value": "[variables('arrayVar')]"
+    },
+    "arrayElementOutput": {
+      "type": "int",
+      "value": "[variables('arrayVar')[0]]"
+    },
+    "objectOutput": {
+      "type": "object",
+      "value": "[variables('objectVar')]"
+    },
+    "copyWithinVariableOutput": {
+      "type": "object",
+      "value": "[variables('copyWithinVar')]"
+    },
+    "topLevelCopyOutput1": {
+      "type": "array",
+      "value": "[variables('topLevelCopy1')]"
+    },
+    "topLevelCopyOutput2": {
+      "type": "array",
+      "value": "[variables('topLevelCopy2')]"
+    },
+    "topLevelCopyOutput3": {
+      "type": "array",
+      "value": "[variables('topLevelCopy3')]"
+    },
+    "topLevelCopyOutput4": {
+      "type": "array",
+      "value": "[variables('topLevelCopy4')]"
+    }
+  }
 }

@@ -1,0 +1,2366 @@
+{
+  "LastModifiedUtc": "0001-01-01T00:00:00",
+  "Version": "2.0",
+  "Labels": {
+    "1866ca45-1973-4c28-9d12-04d407f147ad": {
+      "DisplayName": "Public",
+      "Description": "Business data that is specifically prepared and approved for public consumption",
+      "Rank": "None",
+      "Order": 100,
+      "Enabled": true
+    },
+    "684a0db2-d514-49d8-8c0c-df84a7b083eb": {
+      "DisplayName": "General",
+      "Description": "Business data that is not intended for public consumption. However, this can be shared with external partners, as required",
+      "Rank": "Low",
+      "Order": 200,
+      "Enabled": true
+    },
+    "331f0b13-76b5-2f1b-a77b-def5a73c73c2": {
+      "DisplayName": "Confidential",
+      "Description": "Sensitive business data that could cause damage to the business if shared with unauthorized people",
+      "Rank": "Medium",
+      "Order": 300,
+      "Enabled": true
+    },
+    "989adc05-3f3f-0588-a635-f475b994915b": {
+      "DisplayName": "Confidential - GDPR",
+      "Description": "Sensitive data containing personal information associated with an individual, that could be misused in the hands of unauthorized",
+      "Rank": "Medium",
+      "Order": 400,
+      "Enabled": true
+    },
+    "b82ce05b-60a9-4cf3-8a8a-d6a0bb76e903": {
+      "DisplayName": "Highly Confidential",
+      "Description": "Very sensitive business data that would cause damage to the business if it was shared with unauthorized people",
+      "Rank": "High",
+      "Order": 500,
+      "Enabled": true
+    },
+    "3302ae7f-b8ac-46bc-97f8-378828781efd": {
+      "DisplayName": "Highly Confidential - GDPR",
+      "Description": "Sensitive data containing personal information associated with an individual, that can cause significant harm if misused by unauthorized people",
+      "Rank": "High",
+      "Order": 600,
+      "Enabled": true
+    }
+  },
+  "InformationTypes": {
+    "b40ad280-0f6a-6ca8-11ba-2f1a08651fcf": {
+      "DisplayName": "Networking",
+      "Description": "Data related to the network domain. Example: IP, port, etc.",
+      "Order": 100,
+      "RecommendedLabelId": "331f0b13-76b5-2f1b-a77b-def5a73c73c2",
+      "Enabled": true,
+      "Custom": false,
+      "Keywords": [
+        {
+          "Pattern": "ip",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%[^h]ip%address%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "ip%address%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%mac%address%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        }
+      ]
+    },
+    "5c503e21-22c6-81fa-620b-f369b8ec38d1": {
+      "DisplayName": "Contact Info",
+      "Description": "Contact data of a person. Example: address, phone, etc.",
+      "Order": 200,
+      "RecommendedLabelId": "331f0b13-76b5-2f1b-a77b-def5a73c73c2",
+      "Enabled": true,
+      "Custom": false,
+      "Keywords": [
+        {
+          "Pattern": "%email%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%e-mail%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%addr%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%street%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%city%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%phone%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%mobile%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%area%code%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%postal%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%zip%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        }
+      ]
+    },
+    "c64aba7b-3a3e-95b6-535d-3bc535da5a59": {
+      "DisplayName": "Credentials",
+      "Description": "Credential related data. Example: username, password, etc.",
+      "Order": 300,
+      "RecommendedLabelId": "331f0b13-76b5-2f1b-a77b-def5a73c73c2",
+      "Enabled": true,
+      "Custom": false,
+      "Keywords": [
+        {
+          "Pattern": "%username%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%pwd%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%password%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%reset%code%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%pass%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%user%acc%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        }
+      ]
+    },
+    "d22fa6e9-5ee4-3bde-4c2b-a409604c4646": {
+      "DisplayName": "Credit Card",
+      "Description": "Credit card related data",
+      "Order": 700,
+      "RecommendedLabelId": "331f0b13-76b5-2f1b-a77b-def5a73c73c2",
+      "Enabled": true,
+      "Custom": false,
+      "Keywords": [
+        {
+          "Pattern": "%credit%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%card%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%ccn%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%debit%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%visa%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%mastercard%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cvv%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%expy%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%expm%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%atmkaart%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%american%express%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%americanexpress%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%americano%espresso%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%amex%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%atm%card%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%atm%cards%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%atm%kaart%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%atmcard%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%atmcards%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%carte%bancaire%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%atmkaarten%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%bancontact%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%bank%card%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%bankkaart%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%card%holder%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%card%num%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%card%type%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cardano%numerico%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%carta%bianca%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%carta%credito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%carta%di%credito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cartao%de%credito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cartao%de%crédito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cartao%de%debito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cartao%de%débito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cirrus%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%carte%blanche%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%carte%bleue%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%carte%de%credit%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%carte%de%crédit%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%carte%di%credito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%carteblanche%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cartão%de%credito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cartão%de%crédito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cartão%de%debito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cartão%de%débito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%check%card%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%chequekaart%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%hoofdkaart%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cirrus-edc-maestro%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%controlekaart%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%credit%card%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%debet%kaart%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%debit%card%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%debito%automatico%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%diners%club%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%discover%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%discover%card%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%débito%automático%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%eigentümername%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%european%debit%card%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%master%card%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%hoofdkaarten%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%in%viaggio%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%japanese%card%bureau%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%japanse%kaartdienst%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%jcb%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%kaart%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%kaart%num%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%kaartaantal%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%kaarthouder%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%karte%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%karteninhaber%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%kartennr%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%kartennummer%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%kreditkarte%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%maestro%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%de%carte%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "mc",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%mister%cash%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%n%carta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%n.%carta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%no%de%tarjeta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%no%do%cartao%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%no%do%cartão%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%no.%de%tarjeta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%no.%do%cartao%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%no.%do%cartão%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%nr%carta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%nr.%carta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numeri%di%scheda%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%carta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%de%cartao%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%número%de%cartao%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%de%cartão%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%de%tarjeta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%della%carta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%di%carta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%di%scheda%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%do%cartao%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%do%cartão%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numéro%de%carte%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%nº%carta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%nº%de%carte%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%nº%de%la%carte%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%nº%de%tarjeta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%nº%do%cartao%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%nº%do%cartão%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%nº.%do%cartão%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%scoprono%le%schede%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%número%de%cartão%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%número%de%tarjeta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%número%do%cartao%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%scheda%dell'assegno%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%scheda%dell'atmosfera%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%scheda%dell'atmosfera%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%scheda%della%banca%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%scheda%di%controllo%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%scheda%di%debito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%scheda%matrice%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%schede%dell'atmosfera%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%schede%di%controllo%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%schede%di%debito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%schede%matrici%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%scoprono%la%scheda%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%visa%plus%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%solo%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%supporti%di%scheda%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%supporto%di%scheda%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%switch%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%tarjeta%atm%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%tarjeta%credito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%tarjeta%de%atm%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%tarjeta%de%credito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%tarjeta%de%debito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%tarjeta%debito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%tarjeta%no%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%tarjetahabiente%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%tipo%della%scheda%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%ufficio%giapponese%della%scheda%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%v%pay%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%codice%di%verifica%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%visa%electron%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%visto%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%card%identification%number%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%card%verification%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cardi%la%verifica%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "cid",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cod%seg%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cod%seguranca%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cod%segurança%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cod%sicurezza%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cod.%seg%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cod.%seguranca%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cod.%segurança%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cod.%sicurezza%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%codice%di%sicurezza%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%código%de%seguranca%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%codigo%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%codigo%de%seguranca%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%codigo%de%segurança%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%crittogramma%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cryptogram%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cryptogramme%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cv2%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cvc%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cvc2%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cvn%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cód%seguranca%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cód%segurança%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cód.%seguranca%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%cód.%segurança%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%código%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%di%sicurezza%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%código%de%segurança%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%de%kaart%controle%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%geeft%nr%uit%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%issue%no%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%issue%number%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%kaartidentificatienummer%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%kreditkartenprufnummer%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%kreditkartenprüfnummer%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%kwestieaantal%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%no.%dell'edizione%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%no.%di%sicurezza%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%de%securite%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%de%verificacao%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%dell'edizione%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%di%identificazione%della%scheda%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%veiligheid%nr%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%van%veiligheid%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numéro%de%sécurité%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%nº%autorizzazione%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%número%de%verificação%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%perno%il%blocco%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%pin%block%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%prufziffer%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%prüfziffer%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%security%code%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%security%no%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%security%number%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%sicherheits%kode%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%sicherheitscode%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%sicherheitsnummer%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%speldblok%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%datum%van%exp%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%veiligheidsaantal%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%veiligheidscode%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%veiligheidsnummer%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%verfalldatum%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%ablauf%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%data%de%expiracao%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%data%de%expiração%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%data%del%exp%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%data%di%exp%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%data%di%scadenza%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%data%em%que%expira%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%data%scad%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%data%scadenza%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%date%de%validité%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%datum%afloop%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%de%afloop%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%datum%van%exp%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%espira%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%espira%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%exp%date%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%exp%datum%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%expiration%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%expire%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%expires%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%expiry%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%fecha%de%expiracion%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%fecha%de%venc%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%gultig%bis%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%gultigkeitsdatum%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%gültig%bis%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%gültigkeitsdatum%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%scadenza%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%valable%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%validade%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%valido%hasta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%valor%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%venc%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%vencimento%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%vencimiento%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%verloopt%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%vervaldag%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%vervaldatum%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%vto%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%válido%hasta%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%tarjeta%crédito%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        }
+      ]
+    },
+    "8a462631-4130-0a31-9a52-c6a9ca125f92": {
+      "DisplayName": "Banking",
+      "Description": "Bank related data. Example: debit, swift, etc.",
+      "Order": 800,
+      "RecommendedLabelId": "331f0b13-76b5-2f1b-a77b-def5a73c73c2",
+      "Enabled": true,
+      "Custom": false,
+      "Keywords": [
+        {
+          "Pattern": "%iban%code%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%iban%num%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%banking%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%routing%no%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%savings%acc%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%debit%acc%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "iban",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%routing%number%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "aba",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%aba%routing%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%bank%routing%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%swift%code%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%swift%routing%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%swift%num%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%bic%code%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%bic%num%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%acct%nbr%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%acct%num%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%acct%no%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%bank%acc%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        }
+      ]
+    },
+    "c44193e1-0e58-4b2a-9001-f7d6e7bc1373": {
+      "DisplayName": "Financial",
+      "Description": "Finance related data. Example: account, payment, etc.",
+      "Order": 900,
+      "RecommendedLabelId": "331f0b13-76b5-2f1b-a77b-def5a73c73c2",
+      "Enabled": true,
+      "Custom": false,
+      "Keywords": [
+        {
+          "Pattern": "%account%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%tax%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%paypal%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%payment%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%insurance%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%pmt%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%amount%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%amt%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%compensation%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%currency%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%invoice%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        }
+      ]
+    },
+    "9c5b4809-0ccc-0637-6547-91a6f8bb609d": {
+      "DisplayName": "Other",
+      "Description": "Any other data which doesn’t fall into any of the above info types",
+      "Order": 1200,
+      "RecommendedLabelId": "331f0b13-76b5-2f1b-a77b-def5a73c73c2",
+      "Enabled": true,
+      "Custom": false,
+      "Keywords": [
+        {
+          "Pattern": "%security%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%personal%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        }
+      ]
+    },
+    "57845286-7598-22f5-9659-15b24aeb125e": {
+      "DisplayName": "Name",
+      "Description": "Data related to a person’s first and last names",
+      "Order": 400,
+      "RecommendedLabelId": "989adc05-3f3f-0588-a635-f475b994915b",
+      "Enabled": true,
+      "Custom": false,
+      "Keywords": [
+        {
+          "Pattern": "%last%name%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%first%name%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%surname%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%maiden%name%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%full%name%",
+          "Custom": false,
+          "CanBeNumeric": false,
+          "Excluded": null
+        }
+      ]
+    },
+    "6f5a11a7-08b1-19c3-59e5-8c89cf4f8444": {
+      "DisplayName": "National ID",
+      "Description": "Data related to the ID of a person. Example: passport, diver, etc.",
+      "Order": 500,
+      "RecommendedLabelId": "989adc05-3f3f-0588-a635-f475b994915b",
+      "Enabled": true,
+      "Custom": false,
+      "Keywords": [
+        {
+          "Pattern": "%passport%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%Pasaporte%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%tax%id%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "itin",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%driver%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%identification%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%Identificación%Fiscal%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%identification%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%id%number%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%national%id%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%Fuehrerschein%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%Führerschein%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%Fuhrerschein%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%Fuehrerschein%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numéro%identité%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%no%identité%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%no.%identité%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numero%identite%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%no%identite%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%no.%identite%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%le%numéro%d'identification%nationale%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%identité%nationale%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%reisepass%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%passeport%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%Personalausweis%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%Identifizierungsnummer%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%Ausweis%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%Identifikation%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%patente%di%guida%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        }
+      ]
+    },
+    "d936ec2c-04a4-9cf7-44c2-378a96456c61": {
+      "DisplayName": "SSN",
+      "Description": "Data related to the Social Security Number of a person",
+      "Order": 600,
+      "RecommendedLabelId": "989adc05-3f3f-0588-a635-f475b994915b",
+      "Enabled": true,
+      "Custom": false,
+      "Keywords": [
+        {
+          "Pattern": "ssn",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%ss_num%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%ssnum%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "sin",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%employeessn%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%social%security%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%soc%sec%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "ssid",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%insee%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%securité%sociale%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%securite%sociale%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numéro%de%sécurité%sociale%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%le%code%de%la%sécurité%sociale%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numéro%d'assurance%sociale%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%numéro%de%sécu%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%code%sécu%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        }
+      ]
+    },
+    "6e2c5b18-97cf-3073-27ab-f12f87493da7": {
+      "DisplayName": "Health",
+      "Description": "Health related data. Example: patient, clinic, etc.",
+      "Order": 1000,
+      "RecommendedLabelId": "989adc05-3f3f-0588-a635-f475b994915b",
+      "Enabled": true,
+      "Custom": false,
+      "Keywords": [
+        {
+          "Pattern": "%patient%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%clinic%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%medical%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%treatment%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%healthcondition%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%medication%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%health%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%prescription%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        }
+      ]
+    },
+    "3de7cc52-710d-4e96-7e20-4d5188d2590c": {
+      "DisplayName": "Date Of Birth",
+      "Description": "Data related to a person’s date of birth",
+      "Order": 1100,
+      "RecommendedLabelId": "989adc05-3f3f-0588-a635-f475b994915b",
+      "Enabled": true,
+      "Custom": false,
+      "Keywords": [
+        {
+          "Pattern": "%birthday%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%date%of%birth%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "%birth%date%",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        },
+        {
+          "Pattern": "dob",
+          "Custom": false,
+          "CanBeNumeric": true,
+          "Excluded": null
+        }
+      ]
+    }
+  }
+}

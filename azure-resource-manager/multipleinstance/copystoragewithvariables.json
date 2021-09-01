@@ -1,41 +1,41 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagePrefix": {
-            "type": "string",
-            "maxLength": 10
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storagePrefix": {
+      "type": "string",
+      "maxLength": 10
+    }
+  },
+  "variables": {
+    "copy": [
+      {
+        "name": "storageAccounts",
+        "count": 3,
+        "input": {
+          "name": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id), copyIndex('storageAccounts'))]",
+          "kind": "Storage",
+          "skuName": "Standard_LRS"
         }
-    },
-    "variables": {
-        "copy": [
-            {
-                "name": "storageAccounts",
-                "count": 3,
-                "input": {
-                    "name": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id), copyIndex('storageAccounts'))]",
-                    "kind": "Storage",
-                    "skuName": "Standard_LRS"
-                }
-            }
-        ]
-    },
-    "resources": [
-        {
-            "apiVersion": "2017-06-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageAccounts')[copyIndex()].name]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {},
-            "copy": {
-                "name": "storagecopy",
-                "count": "[length(variables('storageAccounts'))]"
-            }
-        }
-    ],
-    "outputs": {}
+      }
+    ]
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-04-01",
+      "name": "[variables('storageAccounts')[copyIndex()].name]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "copy": {
+        "name": "storagecopy",
+        "count": "[length(variables('storageAccounts'))]"
+      },
+      "properties": {}
+    }
+  ],
+  "outputs": {}
 }

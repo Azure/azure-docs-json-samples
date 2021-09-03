@@ -1,9 +1,0 @@
-{
-  "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
-  "type": "QuickStart",
-  "itemDisplayName": "Deploy an Azure SQL Server and a SQL database.",
-  "description": "This template allows you to deploy an Azure SQL server and an Azure SQL database.",
-  "summary": "Deploy an Azure SQL Server and an SQL database.",
-  "githubUsername": "mumian",
-  "dateUpdated": "2019-06-28"
-}

@@ -1,7 +1,0 @@
-[
-  {
-    "myEventTypeField":"Created",
-    "resource":"Users/example/Messages/1000",
-    "resourceData":{"someDataField1":"SomeDataFieldValue"}
-  }
-]

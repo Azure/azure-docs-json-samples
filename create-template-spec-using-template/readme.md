@@ -1,1 +1,0 @@
-This is an ARM quickstart template.  A decompiled Bicep file is needed before the ARM quickstart templates provide the Bicep files.

@@ -1,0 +1,34 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "testArray": {
+            "type": "array",
+            "defaultValue": []
+        },
+        "testObject": {
+            "type": "object",
+            "defaultValue": {}
+        },
+        "testString": {
+            "type": "string",
+            "defaultValue": ""
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "arrayEmpty": {
+            "type": "bool",
+            "value": "[empty(parameters('testArray'))]"
+        },
+        "objectEmpty": {
+            "type": "bool",
+            "value": "[empty(parameters('testObject'))]"
+        },
+        "stringEmpty": {
+            "type": "bool",
+            "value": "[empty(parameters('testString'))]"
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "objectToTest": {
+      "type": "object",
+      "defaultValue": {
+        "one": "a",
+        "two": "b",
+        "three": "c"
+      }
+    },
+    "arrayToTest": {
+      "type": "array",
+      "defaultValue": [ "one", "two", "three" ]
+    }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "stringArray": {
+      "type": "array",
+      "value": "[createArray('a', 'b', 'c')]"
+    },
+    "intArray": {
+      "type": "array",
+      "value": "[createArray(1, 2, 3)]"
+    },
+    "objectArray": {
+      "type": "array",
+      "value": "[createArray(parameters('objectToTest'))]"
+    },
+    "arrayArray": {
+      "type": "array",
+      "value": "[createArray(parameters('arrayToTest'))]"
+    },
+    "emptyArray": {
+      "type": "array",
+      "value": "[createArray()]"
+    }
+  }
+}

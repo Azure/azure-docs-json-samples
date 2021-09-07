@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "intToConvert": {
+      "type": "int",
+      "defaultValue": 1
+    },
+    "stringToConvert": {
+      "type": "string",
+      "defaultValue": "efgh"
+    },
+    "objectToConvert": {
+      "type": "object",
+      "defaultValue": {
+        "a": "b",
+        "c": "d"
+      }
+    }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "intOutput": {
+      "type": "array",
+      "value": "[array(parameters('intToConvert'))]"
+    },
+    "stringOutput": {
+      "type": "array",
+      "value": "[array(parameters('stringToConvert'))]"
+    },
+    "objectOutput": {
+      "type": "array",
+      "value": "[array(parameters('objectToConvert'))]"
+    }
+  }
+}

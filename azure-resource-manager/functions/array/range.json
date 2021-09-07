@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "startingInt": {
+      "type": "int",
+      "defaultValue": 5
+    },
+    "numberOfElements": {
+      "type": "int",
+      "defaultValue": 3
+    }
+  },
+  "resources": [],
+  "outputs": {
+    "rangeOutput": {
+      "type": "array",
+      "value": "[range(parameters('startingInt'),parameters('numberOfElements'))]"
+    }
+  }
+}

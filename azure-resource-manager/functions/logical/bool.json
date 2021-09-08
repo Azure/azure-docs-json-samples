@@ -1,23 +1,23 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "trueString": {
-            "value": "[bool('true')]",
-            "type" : "bool"
-        },
-        "falseString": {
-            "value": "[bool('false')]",
-            "type" : "bool"
-        },
-        "trueInt": {
-            "value": "[bool(1)]",
-            "type" : "bool"
-        },
-        "falseInt": {
-            "value": "[bool(0)]",
-            "type" : "bool"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "trueString": {
+      "type": "bool",
+      "value": "[bool('true')]"
+    },
+    "falseString": {
+      "type": "bool",
+      "value": "[bool('false')]"
+    },
+    "trueInt": {
+      "type": "bool",
+      "value": "[bool(1)]"
+    },
+    "falseInt": {
+      "type": "bool",
+      "value": "[bool(0)]"
     }
+  }
 }

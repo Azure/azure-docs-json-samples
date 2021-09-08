@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "omsAutomationAccountName": {
+      "type": "string",
+      "defaultValue": "demoAutomation",
+      "metadata": {
+        "description": "Use an existing Automation account."
+      }
+    },
+    "scheduleName": {
+      "type": "string",
+      "defaultValue": "demoSchedule1",
+      "metadata": {
+        "description": "Name of the new schedule."
+      }
+    },
+    "baseTime": {
+      "type": "string",
+      "defaultValue": "[utcNow('u')]",
+      "metadata": {
+        "description": "Schedule will start one hour from this time."
+      }
+    }
+  },
+  "variables": {
+    "startTime": "[dateTimeAdd(parameters('baseTime'), 'PT1H')]"
+  },
+  "resources": [
+    ...
+    {
+      "type": "Microsoft.Automation/automationAccounts/schedules",
+      "apiVersion": "2015-10-31",
+      "name": "[concat(parameters('omsAutomationAccountName'), '/', parameters('scheduleName'))]",
+
+      "properties": {
+        "description": "Demo Scheduler",
+        "startTime": "[variables('startTime')]",
+        "interval": 1,
+        "frequency": "Hour"
+      }
+    }
+  ],
+  "outputs": {
+  }
+}

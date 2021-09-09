@@ -1,19 +1,19 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageResourceGroup": {
-            "type": "string"
-        },
-        "storageAccountName": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageResourceGroup": {
+      "type": "string"
     },
-    "resources": [],
-    "outputs": {
-        "ExistingStorage": {
-            "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]",
-            "type": "object"
-        }
+    "storageAccountName": {
+      "type": "string"
     }
+  },
+  "resources": [],
+  "outputs": {
+    "ExistingStorage": {
+      "type": "object",
+      "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2021-04-01')]"
+    }
+  }
 }

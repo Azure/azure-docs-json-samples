@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string"
+    },
+    "virtualNetworkName": {
+      "type": "string"
+    },
+    "virtualNetworkResourceGroup": {
+      "type": "string"
+    },
+    "subnet1Name": {
+      "type": "string"
+    },
+    "nicName": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "subnet1Ref": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/networkInterfaces",
+      "apiVersion": "2021-02-01",
+      "name": "[parameters('nicName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[variables('subnet1Ref')]"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

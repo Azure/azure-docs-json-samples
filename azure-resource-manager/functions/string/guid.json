@@ -6,16 +6,16 @@
   "resources": [],
   "outputs": {
     "guidPerSubscription": {
-      "value": "[guid(subscription().subscriptionId)]",
-      "type": "string"
+      "type": "string",
+      "value": "[guid(subscription().subscriptionId)]"
     },
     "guidPerResourceGroup": {
-      "value": "[guid(resourceGroup().id)]",
-      "type": "string"
+      "type": "string",
+      "value": "[guid(resourceGroup().id)]"
     },
     "guidPerDeployment": {
-      "value": "[guid(resourceGroup().id, deployment().name)]",
-      "type": "string"
+      "type": "string",
+      "value": "[guid(resourceGroup().id, deployment().name)]"
     }
   }
 }

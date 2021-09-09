@@ -10,8 +10,8 @@
   "resources": [],
   "outputs": {
     "substringOutput": {
-      "value": "[substring(parameters('testString'), 4, 3)]",
-      "type": "string"
+      "type": "string",
+      "value": "[substring(parameters('testString'), 4, 3)]"
     }
   }
 }

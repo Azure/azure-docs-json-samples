@@ -10,8 +10,8 @@
   "resources": [],
   "outputs": {
     "toLowerOutput": {
-      "value": "[toLower(parameters('testString'))]",
-      "type": "string"
+      "type": "string",
+      "value": "[toLower(parameters('testString'))]"
     },
     "toUpperOutput": {
       "type": "string",

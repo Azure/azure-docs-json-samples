@@ -1,12 +1,11 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "resources": [
-  ],
+  "resources": [],
   "outputs": {
-    "checkNotEquals": {
+    "trueOutput": {
       "type": "bool",
-      "value": "[not(equals(1, 2))]"
+      "value": "[true()]"
     }
   }
 }

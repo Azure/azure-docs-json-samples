@@ -1,27 +1,27 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "firstT": {
-            "value": "[indexOf('test', 't')]",
-            "type" : "int"
-        },
-        "lastT": {
-            "value": "[lastIndexOf('test', 't')]",
-            "type" : "int"
-        },
-        "firstString": {
-            "value": "[indexOf('abcdef', 'CD')]",
-            "type" : "int"
-        },
-        "lastString": {
-            "value": "[lastIndexOf('abcdef', 'AB')]",
-            "type" : "int"
-        },
-        "notFound": {
-            "value": "[indexOf('abcdef', 'z')]",
-            "type" : "int"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "firstT": {
+      "type": "int",
+      "value": "[indexOf('test', 't')]"
+    },
+    "lastT": {
+      "type": "int",
+      "value": "[lastIndexOf('test', 't')]"
+    },
+    "firstString": {
+      "type": "int",
+      "value": "[indexOf('abcdef', 'CD')]"
+    },
+    "lastString": {
+      "type": "int",
+      "value": "[lastIndexOf('abcdef', 'AB')]"
+    },
+    "notFound": {
+      "type": "int",
+      "value": "[indexOf('abcdef', 'z')]"
     }
+  }
 }

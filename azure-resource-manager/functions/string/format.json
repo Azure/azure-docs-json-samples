@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "greeting": {
+      "type": "string",
+      "defaultValue": "Hello"
+    },
+    "name": {
+      "type": "string",
+      "defaultValue": "User"
+    },
+    "numberToFormat": {
+      "type": "int",
+      "defaultValue": 8175133
+    }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "formatTest": {
+      "type": "string",
+      "value": "[format('{0}, {1}. Formatted number: {2:N0}', parameters('greeting'), parameters('name'), parameters('numberToFormat'))]"
+    }
+  }
+}

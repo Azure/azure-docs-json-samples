@@ -1,33 +1,33 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "publicIPAddresses_name": {
-            "type": "string"
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "[parameters('publicIPAddresses_name')]",
-            "apiVersion": "2017-06-01",
-            "location": "southcentralus",
-            "properties": {
-                "publicIPAddressVersion": "IPv4",
-                "publicIPAllocationMethod": "Static",
-                "idleTimeoutInMinutes": 4,
-                "dnsSettings": {
-                    "domainNameLabel": "[concat(parameters('publicIPAddresses_name'), uniqueString(resourceGroup().id))]"
-                }
-            },
-            "dependsOn": []
-        }
-    ],
-    "outputs": {
-        "returnedIPAddress": {
-            "type": "string",
-            "value": "[reference(parameters('publicIPAddresses_name')).ipAddress]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "publicIPAddresses_name": {
+      "type": "string"
     }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[parameters('publicIPAddresses_name')]",
+      "apiVersion": "2021-02-01",
+      "location": "southcentralus",
+      "properties": {
+        "publicIPAddressVersion": "IPv4",
+        "publicIPAllocationMethod": "Static",
+        "idleTimeoutInMinutes": 4,
+        "dnsSettings": {
+          "domainNameLabel": "[concat(parameters('publicIPAddresses_name'), uniqueString(resourceGroup().id))]"
+        }
+      },
+      "dependsOn": []
+    }
+  ],
+  "outputs": {
+    "returnedIPAddress": {
+      "type": "string",
+      "value": "[reference(parameters('publicIPAddresses_name')).ipAddress]"
+    }
+  }
 }

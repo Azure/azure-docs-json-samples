@@ -11,7 +11,7 @@
     {
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[parameters('publicIPAddresses_name')]",
-      "apiVersion": "2020-11-01",
+      "apiVersion": "2021-02-01",
       "location": "southcentralus",
       "properties": {
         "publicIPAddressVersion": "IPv4",

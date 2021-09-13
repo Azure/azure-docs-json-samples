@@ -30,11 +30,11 @@
         "name": "Standard_LRS"
       },
       "kind": "Storage",
+      "properties": {},
       "copy": {
         "name": "storagecopy",
         "count": "[length(variables('storageAccounts'))]"
-      },
-      "properties": {}
+      }
     }
   ],
   "outputs": {}

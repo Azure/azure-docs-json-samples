@@ -1,28 +1,28 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string"
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "mgName": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2021-04-01",
+      "name": "nestedMG",
+      "scope": "[variables('mgId')]",
+      "location": "eastus",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          management-group-resources
         }
-    },
-    "variables": {
-        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedMG",
-            "scope": "[variables('mgId')]",
-            "location": "eastus",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    management-group-resources
-                }
-            }
-        }
-    ],
-    "outputs": {}
+      }
+    }
+  ],
+  "outputs": {}
 }

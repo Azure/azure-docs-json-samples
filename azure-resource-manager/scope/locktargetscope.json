@@ -1,17 +1,17 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {  
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/locks",
-            "apiVersion": "2016-09-01",
-            "name": "rgLock",
-            "properties": {
-                "level": "CanNotDelete",
-                "notes": "Resource Group should not be deleted."
-            }
-        }
-    ]
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/locks",
+      "apiVersion": "2016-09-01",
+      "name": "rgLock",
+      "properties": {
+        "level": "CanNotDelete",
+        "notes": "Resource Group should not be deleted."
+      }
+    }
+  ]
 }

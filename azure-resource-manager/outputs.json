@@ -1,27 +1,27 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "stringOutput": {
-            "type": "string",
-            "value": "[deployment().name]"
-        },
-        "integerOutput": {
-            "type": "int",
-            "value": "[length(environment().authentication.audiences)]"
-        },
-        "booleanOutput": {
-            "type": "bool",
-            "value": "[contains(deployment().name, 'demo')]"
-        },
-        "arrayOutput": {
-            "type": "array",
-            "value": "[environment().authentication.audiences]"
-        },
-        "objectOutput": {
-            "type": "object",
-            "value": "[subscription()]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "stringOutput": {
+      "type": "string",
+      "value": "[deployment().name]"
+    },
+    "integerOutput": {
+      "type": "int",
+      "value": "[length(environment().authentication.audiences)]"
+    },
+    "booleanOutput": {
+      "type": "bool",
+      "value": "[contains(deployment().name, 'demo')]"
+    },
+    "arrayOutput": {
+      "type": "array",
+      "value": "[environment().authentication.audiences]"
+    },
+    "objectOutput": {
+      "type": "object",
+      "value": "[subscription()]"
     }
+  }
 }

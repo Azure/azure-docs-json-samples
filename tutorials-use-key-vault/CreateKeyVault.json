@@ -27,7 +27,7 @@
   "resources": [
     {
       "type": "Microsoft.KeyVault/vaults",
-      "apiVersion": "2019-09-01",
+      "apiVersion": "2021-06-01-preview",
       "name": "[parameters('keyVaultName')]",
       "location": "[parameters('location')]",
       "properties": {
@@ -88,7 +88,7 @@
     },
     {
       "type": "Microsoft.KeyVault/vaults/secrets",
-      "apiVersion": "2019-09-01",
+      "apiVersion": "2021-06-01-preview",
       "name": "[concat(parameters('keyVaultName'), '/', parameters('secretName'))]",
       "location": "[parameters('location')]",
       "scale": null,

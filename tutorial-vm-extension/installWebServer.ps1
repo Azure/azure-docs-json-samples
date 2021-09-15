@@ -1,1 +1,1 @@
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
+Install-WindowsFeature -Name Web-Server -IncludeManagementTools

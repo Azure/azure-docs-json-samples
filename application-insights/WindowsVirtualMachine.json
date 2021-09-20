@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
@@ -59,8 +59,8 @@
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('vhdStorageAccountName')]",
       "apiVersion": "2016-01-01",
+      "name": "[variables('vhdStorageAccountName')]",
       "location": "[resourceGroup().location]",
       "tags": {
         "displayName": "StorageAccount"
@@ -71,8 +71,8 @@
       "kind": "Storage"
     },
     {
-      "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2016-03-30",
       "name": "[variables('publicIPAddressName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -86,8 +86,8 @@
       }
     },
     {
-      "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2016-03-30",
       "name": "[variables('virtualNetworkName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -110,8 +110,8 @@
       }
     },
     {
-      "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/networkInterfaces",
+      "apiVersion": "2016-03-30",
       "name": "[variables('nicName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -139,8 +139,8 @@
       }
     },
     {
-      "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2015-06-15",
       "name": "[variables('vmName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -192,8 +192,8 @@
       "resources": [
         {
           "type": "extensions",
-          "name": "Microsoft.Insights.VMDiagnosticsSettings",
           "apiVersion": "2016-03-30",
+          "name": "Microsoft.Insights.VMDiagnosticsSettings",
           "location": "[resourceGroup().location]",
           "tags": {
             "displayName": "AzureDiagnostics"

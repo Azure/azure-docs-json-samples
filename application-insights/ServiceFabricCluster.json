@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUserName": {
@@ -45,8 +45,8 @@
   },
   "resources": [
     {
-      "apiVersion": "2016-01-01",
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-04-01",
       "name": "[variables('vmStorageAccountName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -60,8 +60,8 @@
       "kind": "Storage"
     },
     {
-      "apiVersion": "2016-01-01",
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-04-01",
       "name": "[variables('supportLogStorageAccountName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -75,8 +75,8 @@
       "kind": "Storage"
     },
     {
-      "apiVersion": "2016-01-01",
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-04-01",
       "name": "[variables('applicationDiagnosticsStorageAccountName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -90,8 +90,8 @@
       "kind": "Storage"
     },
     {
-      "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2021-02-01",
       "name": "[variables('virtualNetworkName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -122,8 +122,8 @@
       }
     },
     {
-      "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2021-02-01",
       "name": "[variables('lbIPName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -139,8 +139,8 @@
       }
     },
     {
-      "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/loadBalancers",
+      "apiVersion": "2021-02-01",
       "name": "[variables('lbName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
@@ -300,8 +300,8 @@
       }
     },
     {
-      "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachineScaleSets",
+      "apiVersion": "2021-04-01",
       "name": "[variables('vmNodeType0Name')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
@@ -328,8 +328,8 @@
                   "type": "ServiceFabricNode",
                   "autoUpgradeMinorVersion": false,
                   "protectedSettings": {
-                    "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2016-01-01').keys[0].value]",
-                    "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2016-01-01').keys[1].value]"
+                    "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2021-04-01').keys[0].value]",
+                    "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2021-04-01').keys[1].value]"
                   },
                   "publisher": "Microsoft.Azure.ServiceFabric",
                   "settings": {
@@ -346,7 +346,7 @@
                   "autoUpgradeMinorVersion": true,
                   "protectedSettings": {
                     "storageAccountName": "[variables('applicationDiagnosticsStorageAccountName')]",
-                    "storageAccountKey": "[listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('applicationDiagnosticsStorageAccountName')), '2016-01-01').keys[0].value]"
+                    "storageAccountKey": "[listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('applicationDiagnosticsStorageAccountName')), '2021-04-01').keys[0].value]"
                   },
                   "publisher": "Microsoft.Azure.Diagnostics",
                   "settings": {
@@ -443,7 +443,7 @@
             },
             "osDisk": {
               "vhdContainers": [
-                "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('vmStorageAccountName')), '2016-01-01').primaryEndpoints.blob, 'vhds')]"
+                "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('vmStorageAccountName')), '2021-04-01').primaryEndpoints.blob, 'vhds')]"
               ],
               "name": "vmssosdisk",
               "caching": "ReadOnly",
@@ -459,8 +459,8 @@
       }
     },
     {
-      "apiVersion": "2016-09-01",
       "type": "Microsoft.ServiceFabric/clusters",
+      "apiVersion": "2021-06-01",
       "name": "[variables('clusterName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
@@ -474,11 +474,11 @@
       "properties": {
         "clusterState": "Default",
         "diagnosticsStorageAccountConfig": {
-          "blobEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+          "blobEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')), '2021-04-01').primaryEndpoints.blob]",
           "protectedAccountKeyName": "StorageAccountKey1",
-          "queueEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')), '2016-01-01').primaryEndpoints.queue]",
+          "queueEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')), '2021-04-01').primaryEndpoints.queue]",
           "storageAccountName": "[variables('supportLogStorageAccountName')]",
-          "tableEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')), '2016-01-01').primaryEndpoints.table]"
+          "tableEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')), '2021-04-01').primaryEndpoints.table]"
         },
         "fabricSettings": [
           {

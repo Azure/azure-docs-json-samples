@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
@@ -59,8 +59,8 @@
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-04-01",
       "name": "[variables('vhdStorageAccountName')]",
-      "apiVersion": "2016-01-01",
       "location": "[resourceGroup().location]",
       "tags": {
         "displayName": "StorageAccount"
@@ -71,8 +71,8 @@
       "kind": "Storage"
     },
     {
-      "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2021-02-01",
       "name": "[variables('publicIPAddressName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -86,8 +86,8 @@
       }
     },
     {
-      "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2021-02-01",
       "name": "[variables('virtualNetworkName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -110,8 +110,8 @@
       }
     },
     {
-      "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/networkInterfaces",
+      "apiVersion": "2021-02-01",
       "name": "[variables('nicName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -139,8 +139,8 @@
       }
     },
     {
-      "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2021-04-01",
       "name": "[variables('vmName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -169,7 +169,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('vhdStorageAccountName')), '2016-01-01').primaryEndpoints.blob, variables('vhdStorageContainerName'), '/', variables('OSDiskName'), '.vhd')]"
+              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('vhdStorageAccountName')), '2021-04-01').primaryEndpoints.blob, variables('vhdStorageContainerName'), '/', variables('OSDiskName'), '.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -185,15 +185,15 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": true,
-            "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('vhdStorageAccountName')), '2016-01-01').primaryEndpoints.blob]"
+            "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('vhdStorageAccountName')), '2021-04-01').primaryEndpoints.blob]"
           }
         }
       },
       "resources": [
         {
           "type": "extensions",
+          "apiVersion": "2021-04-01",
           "name": "Microsoft.Insights.VMDiagnosticsSettings",
-          "apiVersion": "2016-03-30",
           "location": "[resourceGroup().location]",
           "tags": {
             "displayName": "AzureDiagnostics"
@@ -487,7 +487,7 @@
             },
             "protectedSettings": {
               "storageAccountName": "[variables('diagnosticsStorageAccountName')]",
-              "storageAccountKey": "[listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('diagnosticsStorageAccountName')), '2016-01-01').keys[0].value]"
+              "storageAccountKey": "[listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('diagnosticsStorageAccountName')), '2021-04-01').keys[0].value]"
             }
           }
         }

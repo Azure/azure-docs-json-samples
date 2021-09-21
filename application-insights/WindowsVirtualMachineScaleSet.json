@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmSize": {
@@ -21,19 +21,19 @@
     },
     "vmssName": {
       "type": "string",
+      "minLength": 3,
+      "maxLength": 61,
       "metadata": {
         "description": "DNS name used for public IP addresses and as base for naming other resources. Must be globally unique and 3 to 61 characters long."
-      },
-      "minLength": 3,
-      "maxLength": 61
+      }
     },
     "instanceCount": {
       "type": "int",
+      "minValue": 1,
+      "maxValue": 100,
       "metadata": {
         "description": "Number of VM instances (100 or less)"
-      },
-      "minValue": 1,
-      "maxValue": 100
+      }
     },
     "adminUsername": {
       "type": "string",
@@ -90,9 +90,9 @@
   "resources": [
     {
       "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2021-02-01",
       "name": "[variables('virtualNetworkName')]",
       "location": "[variables('location')]",
-      "apiVersion": "2016-03-30",
       "tags": {
         "displayName": "VirtualNetwork"
       },
@@ -114,26 +114,26 @@
     },
     {
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-04-01",
       "name": "[variables('uniqueStringArray')[copyIndex()]]",
       "location": "[variables('location')]",
-      "apiVersion": "2016-01-01",
       "tags": {
         "displayName": "StorageAccounts"
-      },
-      "copy": {
-        "name": "storageLoop",
-        "count": "[length(variables('uniqueStringArray'))]"
       },
       "sku": {
         "name": "[variables('storageAccountType')]"
       },
-      "kind": "Storage"
+      "kind": "Storage",
+      "copy": {
+        "name": "storageLoop",
+        "count": "[length(variables('uniqueStringArray'))]"
+      }
     },
     {
       "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2021-02-01",
       "name": "[variables('publicIPAddressName')]",
       "location": "[variables('location')]",
-      "apiVersion": "2016-03-30",
       "tags": {
         "displayName": "PublicIP"
       },
@@ -146,9 +146,9 @@
     },
     {
       "type": "Microsoft.Network/loadBalancers",
+      "apiVersion": "2021-02-01",
       "name": "[variables('loadBalancerName')]",
       "location": "[variables('location')]",
-      "apiVersion": "2016-03-30",
       "tags": {
         "displayName": "LoadBalancer"
       },
@@ -189,9 +189,9 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachineScaleSets",
+      "apiVersion": "2021-04-01",
       "name": "[variables('namingInfix')]",
       "location": "[variables('location')]",
-      "apiVersion": "2016-03-30",
       "tags": {
         "displayName": "VMScaleSet"
       },
@@ -214,11 +214,11 @@
           "storageProfile": {
             "osDisk": {
               "vhdContainers": [
-                "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('uniqueStringArray')[0]), '2016-01-01').primaryEndpoints.blob, variables('vhdContainerName'))]",
-                "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('uniqueStringArray')[1]), '2016-01-01').primaryEndpoints.blob, variables('vhdContainerName'))]",
-                "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('uniqueStringArray')[2]), '2016-01-01').primaryEndpoints.blob, variables('vhdContainerName'))]",
-                "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('uniqueStringArray')[3]), '2016-01-01').primaryEndpoints.blob, variables('vhdContainerName'))]",
-                "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('uniqueStringArray')[4]), '2016-01-01').primaryEndpoints.blob, variables('vhdContainerName'))]"
+                "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('uniqueStringArray')[0]), '2021-04-01').primaryEndpoints.blob, variables('vhdContainerName'))]",
+                "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('uniqueStringArray')[1]), '2021-04-01').primaryEndpoints.blob, variables('vhdContainerName'))]",
+                "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('uniqueStringArray')[2]), '2021-04-01').primaryEndpoints.blob, variables('vhdContainerName'))]",
+                "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('uniqueStringArray')[3]), '2021-04-01').primaryEndpoints.blob, variables('vhdContainerName'))]",
+                "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('uniqueStringArray')[4]), '2021-04-01').primaryEndpoints.blob, variables('vhdContainerName'))]"
               ],
               "name": "[variables('osDiskName')]",
               "caching": "ReadOnly",
@@ -551,7 +551,7 @@
                   },
                   "protectedSettings": {
                     "storageAccountName": "[variables('diagnosticsStorageAccountName')]",
-                    "storageAccountKey": "[listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('diagnosticsStorageAccountName')), '2016-01-01').keys[0].value]"
+                    "storageAccountKey": "[listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('diagnosticsStorageAccountName')), '2021-04-01').keys[0].value]"
                   }
                 }
               }

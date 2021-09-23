@@ -1,0 +1,1 @@
+The template in _templatespecs_ is used in [Quickstart: Create and deploy template spec](https://docs.microsoft.com/azure/azure-resource-manager/templates/quickstart-create-template-specs).

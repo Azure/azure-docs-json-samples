@@ -1,4 +1,4 @@
-The _container-instances_ templates are used in the following articles:
+The templates in _container-instances_ are used in the following articles:
 
 - [Mount an emptyDir volume in Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-volume-emptydir)
 - [Mount a gitRepo volume in Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-volume-gitrepo)

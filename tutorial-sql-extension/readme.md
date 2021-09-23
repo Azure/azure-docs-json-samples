@@ -1,0 +1,1 @@
+The templates in _tutorial-sql-extension_ are used in [Tutorial: Import SQL BACPAC files with ARM templates](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-deploy-sql-extensions-bacpac).

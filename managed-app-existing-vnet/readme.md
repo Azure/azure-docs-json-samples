@@ -1,0 +1,1 @@
+The templates in _managed-app-existing-vnet_ are used in [Use existing virtual network with Azure Managed Applications](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/existing-vnet-integration).

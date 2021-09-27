@@ -134,7 +134,7 @@
     },
     {
       "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2018-09-01-preview",
+      "apiVersion": "2020-10-01-preview",
       "name": "[variables('bootstrapRoleAssignmentId')]",
       "dependsOn": [
         "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
@@ -148,7 +148,7 @@
     },
     {
       "type": "Microsoft.KeyVault/vaults",
-      "apiVersion": "2018-02-14",
+      "apiVersion": "2021-06-01-preview",
       "name": "[parameters('keyVaultName')]",
       "location": "[parameters('location')]",
       "properties": {

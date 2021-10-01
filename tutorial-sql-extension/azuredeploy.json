@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "databaseServerName": {
@@ -39,7 +39,7 @@
   "resources": [
     {
       "type": "Microsoft.Sql/servers",
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2021-02-01-preview",
       "name": "[parameters('databaseServerName')]",
       "location": "[parameters('location')]",
       "properties": {
@@ -50,7 +50,7 @@
     },
     {
       "type": "Microsoft.Sql/servers/databases",
-      "apiVersion": "2017-10-01-preview",
+      "apiVersion": "2021-02-01-preview",
       "name": "[concat(string(parameters('databaseServerName')), '/', string(parameters('databaseName')))]",
       "location": "[parameters('location')]",
       "dependsOn": [

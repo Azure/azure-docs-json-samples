@@ -1,12 +1,18 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUser": {
-      "value": "GEN-UNIQUE"
+      "value": "value"
     },
     "adminPassword": {
-      "value": "GEN-PASSWORD"
+      "value": "value"
+    },
+    "storageAccountKey": {
+      "value": "value"
+    },
+    "bacpacUrl": {
+      "value": "value"
     }
   }
 }

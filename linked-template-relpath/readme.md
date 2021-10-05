@@ -1,1 +1,1 @@
-The templates in _linked-template-relpath_ are used in [Using linked and nested templates when deploying Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates).
+The templates in _linked-template-relpath_ are used in [Using linked and nested templates when deploying Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates#use-relative-path-for-linked-templates).

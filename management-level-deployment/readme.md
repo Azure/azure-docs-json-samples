@@ -1,1 +1,1 @@
-The templates in _management-level-deployment_ are used in [Management group deployments with ARM templates](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-management-group).
+The template in _management-level-deployment_ is used in [Management group deployments with ARM templates](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-management-group#deployment-commands).

@@ -1,4 +1,4 @@
-The templates in _application-insights_ are used in the following articles:
+The templates in _application-insights_ are used in the Azure Application Insights Profiler documentation:
 
-- [Profile live Azure Service Fabric applications with Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/profiler-servicefabric)
-- [Profile web apps running on an Azure virtual machine or a virtual machine scale set by using Application Insights Profiler](https://docs.microsoft.com/azure/azure-monitor/app/profiler-vm)
+- [Service Fabric applications](https://docs.microsoft.com/azure/azure-monitor/app/profiler-servicefabric#set-up-the-environment-deployment-definition)
+- [Virtual machine or a virtual machine scale set](https://docs.microsoft.com/azure/azure-monitor/app/profiler-vm#deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set)

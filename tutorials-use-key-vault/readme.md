@@ -1,1 +1,1 @@
-The template in _tutorials-use-key-vault_ is used in [Tutorial: Integrate Azure Key Vault in your ARM template deployment](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-use-key-vault).
+The template in _tutorials-use-key-vault_ is used in [Tutorial: Integrate Azure Key Vault in your ARM template deployment](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-use-key-vault#prepare-a-key-vault).

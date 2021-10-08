@@ -1,1 +1,1 @@
-The PowerShell script in _tutorial-vm-extension_ is used in [Tutorial: Deploy virtual machine extensions with ARM templates](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-deploy-vm-extensions).
+The PowerShell script in _tutorial-vm-extension_ is used in [Tutorial: Deploy virtual machine extensions with ARM templates](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-deploy-vm-extensions#prepare-a-powershell-script).

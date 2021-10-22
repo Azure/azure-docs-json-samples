@@ -51,7 +51,7 @@
   "outputs": {
     "storageEndpoint": {
       "type": "object",
-      "value": "[reference(linkedStorage).primaryEndpoints]"
+      "value": "[reference('linkedStorage').primaryEndpoints]"
     }
   }
 }

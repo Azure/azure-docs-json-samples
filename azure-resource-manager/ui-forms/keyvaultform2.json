@@ -20,11 +20,11 @@
             }
           ]
         },
-				{
+        {
           "name": "keyvault",
           "label": "Key Vault",
           "elements": [
-						{
+          {
               "name": "keyVaultName",
               "type": "Microsoft.Common.TextBox",
               "label": "Key Vault Name",
@@ -37,7 +37,7 @@
               },
               "visible": true
             },
-						{
+            {
               "name": "skuName",
               "type": "Microsoft.Common.DropDown",
               "label": "Sku Name",
@@ -58,7 +58,7 @@
               },
               "visible": true
             },
-						{
+            {
               "name": "enabledForDeployment",
               "type": "Microsoft.Common.DropDown",
               "label": "Enabled For Deployment",
@@ -121,13 +121,13 @@
               },
               "visible": true
             }
-					]
-				},
-				{
+          ]
+        },
+        {
           "name": "permissions",
           "label": "Permissions",
           "elements": [
-						{
+            {
               "name": "tenantId",
               "type": "Microsoft.Common.TextBox",
               "label": "Tenant Id",
@@ -153,7 +153,7 @@
               },
               "visible": true
             },
-						{
+            {
               "name": "keysPermissions",
               "type": "Microsoft.Common.DropDown",
               "label": "Keys Permissions",
@@ -289,13 +289,13 @@
               },
               "visible": true
             }
-					]
-				},
-				{
+          ]
+        },
+        {
           "name": "secret",
           "label": "Secret",
           "elements": [
-						{
+            {
               "name": "secretName",
               "type": "Microsoft.Common.TextBox",
               "label": "Secret Name",
@@ -326,8 +326,8 @@
               },
               "visible": true
             }
-					]
-				}
+          ]
+        }
       ]
     },
     "outputs": {

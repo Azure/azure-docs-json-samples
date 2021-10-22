@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2021-09-09/uiFormDefinition.schema.json#",
+  "view": {
+    "kind": "Form",
+    "properties": {
+      "title": "Key Vault and secret",
+      "steps": [
+        {
+          "name": "basics",
+          "label": "Basics",
+          "elements": [
+            ...
+          ]
+        },
+        {
+          "name": "keyvault",
+          "label": "Key Vault",
+          "elements": [
+          ]
+        },
+        {
+          "name": "permissions",
+          "label": "Permissions",
+          "elements": [
+          ]
+        },
+        {
+          "name": "secret",
+          "label": "Secret",
+          "elements": [
+          ]
+        }
+      ]
+    },
+    "outputs": {
+      ...
+    }
+  }
+}

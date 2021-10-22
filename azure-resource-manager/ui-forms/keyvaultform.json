@@ -17,19 +17,6 @@
                   "microsoft.resources/resourcegroups"
                 ]
               }
-            },
-            {
-              "name": "location",
-              "type": "Microsoft.Common.TextBox",
-              "label": "Location",
-              "defaultValue": "[[resourceGroup().location]",
-              "toolTip": "Specifies the Azure location where the key vault should be created.",
-              "constraints": {
-                "required": false,
-                "regex": "",
-                "validationMessage": ""
-              },
-              "visible": true
             }
           ]
         },
@@ -71,7 +58,20 @@
               },
               "visible": true
             },
-						{
+            {
+              "name": "location",
+              "type": "Microsoft.Common.TextBox",
+              "label": "Location",
+              "defaultValue": "[[resourceGroup().location]",
+              "toolTip": "Specifies the Azure location where the key vault should be created.",
+              "constraints": {
+                "required": false,
+                "regex": "",
+                "validationMessage": ""
+              },
+              "visible": true
+            },
+            {
               "name": "enabledForDeployment",
               "type": "Microsoft.Common.DropDown",
               "label": "Enabled For Deployment",
@@ -134,13 +134,13 @@
               },
               "visible": true
             }
-					]
-				},
-				{
+          ]
+        },
+        {
           "name": "permissions",
           "label": "Permissions",
           "elements": [
-						{
+            {
               "name": "tenantId",
               "type": "Microsoft.Common.TextBox",
               "label": "Tenant Id",
@@ -166,7 +166,7 @@
               },
               "visible": true
             },
-						{
+            {
               "name": "keysPermissions",
               "type": "Microsoft.Common.TextBox",
               "label": "Keys Permissions",
@@ -192,13 +192,13 @@
               },
               "visible": true
             }
-					]
-				},
-				{
+          ]
+        },
+        {
           "name": "secret",
           "label": "Secret",
           "elements": [
-						{
+            {
               "name": "secretName",
               "type": "Microsoft.Common.TextBox",
               "label": "Secret Name",
@@ -229,14 +229,14 @@
               },
               "visible": true
             }
-					]
-				}
+          ]
+        }
       ]
     },
     "outputs": {
       "parameters": {
         "keyVaultName": "[steps('keyvault').keyVaultName]",
-        "location": "[steps('basics').location]",
+        "location": "[steps('keyvault').location]",
         "enabledForDeployment": "[steps('keyvault').enabledForDeployment]",
         "enabledForDiskEncryption": "[steps('keyvault').enabledForDiskEncryption]",
         "enabledForTemplateDeployment": "[steps('keyvault').enabledForTemplateDeployment]",

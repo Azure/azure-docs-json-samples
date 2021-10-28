@@ -59,6 +59,19 @@
               "visible": true
             },
             {
+              "name": "location",
+              "type": "Microsoft.Common.TextBox",
+              "label": "Location",
+              "defaultValue": "[[resourceGroup().location]",
+              "toolTip": "Specifies the Azure location where the key vault should be created.",
+              "constraints": {
+                "required": false,
+                "regex": "",
+                "validationMessage": ""
+              },
+              "visible": true
+            },
+            {
               "name": "enabledForDeployment",
               "type": "Microsoft.Common.DropDown",
               "label": "Enabled For Deployment",
@@ -333,7 +346,7 @@
     "outputs": {
       "parameters": {
         "keyVaultName": "[steps('keyvault').keyVaultName]",
-        "location": "[steps('basics').resourceScope.location.name]",
+        "location": "[steps('keyvault').location]",
         "enabledForDeployment": "[steps('keyvault').enabledForDeployment]",
         "enabledForDiskEncryption": "[steps('keyvault').enabledForDiskEncryption]",
         "enabledForTemplateDeployment": "[steps('keyvault').enabledForTemplateDeployment]",

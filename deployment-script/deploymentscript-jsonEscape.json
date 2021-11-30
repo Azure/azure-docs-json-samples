@@ -44,14 +44,15 @@
       "location": "[resourceGroup().location]",
       "kind": "AzurePowerShell",
       "properties": {
-        "forceUpdateTag": 1,
+        "forceUpdateTag": "1",
         "azPowerShellVersion": "5.0",
         "arguments": "[concat('-tables', ' ', concat(variables('apostrophe'), replace(string(parameters('tables')), '\"', '\\\"'), variables('apostrophe')))]",
         "scriptContent": "
           param([string] $tables)
-          ConvertFrom-Json $tables -AsHashtable | ConvertTo-Json -Depth 5 -Compress | Write-Host
+          $output = ConvertFrom-Json $tables -AsHashtable | ConvertTo-Json -Depth 5 -Compress
+          $DeploymentScriptOutputs = @{}
+          $DeploymentScriptOutputs['text'] = $output
         ",
-        "supportingScriptUris": [],
         "timeout": "PT30M",
         "cleanupPreference": "OnSuccess",
         "retentionInterval": "P1D"
@@ -59,5 +60,9 @@
     }
   ],
   "outputs": {
+    "result": {
+      "value": "[reference('runPowerShellInline').outputs.text]",
+      "type": "string"
+    }
   }
 }

@@ -12,7 +12,7 @@
     },
     "notSupportedRegion": {
       "type": "array",
-      "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'northcentralus')]"
+      "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'westus')]"
     },
     "notSupportedType": {
       "type": "array",

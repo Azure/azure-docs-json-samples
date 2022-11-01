@@ -20,7 +20,7 @@
       "kind": "AzurePowerShell",
       "properties": {
         "forceUpdateTag": "[parameters('utcValue')]",
-        "azPowerShellVersion": "6.4",
+        "azPowerShellVersion": "8.3",
         "timeout": "PT1H",
         "arguments": "[concat('-name', ' ', parameters('name'))]",
         "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",

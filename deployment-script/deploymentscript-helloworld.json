@@ -20,7 +20,7 @@
       "kind": "AzurePowerShell",
       "properties": {
         "forceUpdateTag": "[parameters('utcValue')]",
-        "azPowerShellVersion": "6.4",
+        "azPowerShellVersion": "8.3",
         "scriptContent": "
           param([string] $name)
           $output = \"Hello {0}\" -f $name

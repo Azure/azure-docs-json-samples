@@ -22,7 +22,7 @@
   "outputs": {
     "mulResult": {
       "type": "int",
-      "value": "[mul(parameters('first'), parameters('second'))]"
+      "value": "[mul(mul(parameters('first'), parameters('second')), 3)]"
     }
   }
 }

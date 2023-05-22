@@ -21,7 +21,7 @@
     {
       "type": "Microsoft.Authorization/policyAssignments",
       "name": "[parameters('policyAssignmentName')]",
-      "apiVersion": "2020-09-01",
+      "apiVersion": "2022-06-01",
       "properties": {
         "scope": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)]",
         "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"

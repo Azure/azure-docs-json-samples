@@ -24,7 +24,7 @@
   "resources": [
     {
       "type": "Microsoft.Network/networkInterfaces",
-      "apiVersion": "2021-02-01",
+      "apiVersion": "2022-11-01",
       "name": "[parameters('nicName')]",
       "location": "[parameters('location')]",
       "properties": {

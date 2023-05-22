@@ -31,7 +31,7 @@
     ...
     {
       "type": "Microsoft.Automation/automationAccounts/schedules",
-      "apiVersion": "2020-01-13-preview",
+      "apiVersion": "2022-08-08",
       "name": "[concat(parameters('omsAutomationAccountName'), '/', parameters('scheduleName'))]",
 
       "properties": {

@@ -101,7 +101,7 @@
   "outputs": {
     "storageEndpoint": {
       "type": "object",
-      "value": "[reference('storageAccount').primaryEndpoints]"
+      "value": "[reference(variables('storageAccountName')).primaryEndpoints]"
     }
   }
 }

@@ -12,7 +12,7 @@
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2021-04-01",
+      "apiVersion": "2022-09-01",
       "name": "nestedMG",
       "scope": "[variables('mgId')]",
       "location": "eastus",

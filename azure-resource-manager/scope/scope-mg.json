@@ -7,12 +7,12 @@
     }
   },
   "variables": {
-    "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
+    "mgId": "[format('Microsoft.Management/managementGroups/{0}', parameters('mgName'))]"
   },
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2021-04-01",
+      "apiVersion": "2022-09-01",
       "name": "nestedDeployment",
       "scope": "[variables('mgId')]",
       "location": "eastus",

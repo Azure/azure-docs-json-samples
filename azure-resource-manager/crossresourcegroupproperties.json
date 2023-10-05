@@ -1,36 +1,31 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2021-04-01",
+      "apiVersion": "2022-09-01",
       "name": "defaultScopeTemplate",
       "resourceGroup": "inlineGroup",
       "properties": {
         "mode": "Incremental",
+        "parameters": {},
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
+          "resources": [],
           "outputs": {
             "resourceGroupOutput": {
               "type": "string",
               "value": "[resourceGroup().name]"
             }
           }
-        },
-        "parameters": {}
+        }
       }
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2021-04-01",
+      "apiVersion": "2022-09-01",
       "name": "innerScopeTemplate",
       "resourceGroup": "inlineGroup",
       "properties": {
@@ -38,54 +33,51 @@
           "scope": "inner"
         },
         "mode": "Incremental",
+        "parameters": {},
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
+          "resources": [],
           "outputs": {
             "resourceGroupOutput": {
               "type": "string",
               "value": "[resourceGroup().name]"
             }
           }
-        },
-        "parameters": {}
+        }
       }
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2021-04-01",
+      "apiVersion": "2022-09-01",
       "name": "linkedTemplate",
       "resourceGroup": "linkedGroup",
       "properties": {
         "mode": "Incremental",
+        "parameters": {},
         "templateLink": {
           "contentVersion": "1.0.0.0",
           "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/resourcegroupname.json"
-        },
-        "parameters": {}
+        }
       }
     }
   ],
   "outputs": {
     "parentRG": {
       "type": "string",
-      "value": "[concat('Parent resource group is ', resourceGroup().name)]"
+      "value": "[format('Parent resource group is {0}', resourceGroup().name)]"
     },
     "defaultScopeRG": {
       "type": "string",
-      "value": "[concat('Default scope resource group is ', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
+      "value": "[format('Default scope resource group is {0}', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
     },
     "innerScopeRG": {
       "type": "string",
-      "value": "[concat('Inner scope resource group is ', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
+      "value": "[format('Inner scope resource group is {0}', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
     },
     "linkedRG": {
       "type": "string",
-      "value": "[concat('Linked resource group is ', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
+      "value": "[format('Linked resource group is {0}', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
     }
   }
 }

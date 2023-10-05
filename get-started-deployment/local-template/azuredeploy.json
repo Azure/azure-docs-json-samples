@@ -4,8 +4,9 @@
   "parameters": {
     "projectName": {
       "type": "string",
-      "maxLength": 11,
+      "defaultValue": "jgao",
       "minLength": 3,
+      "maxLength": 11,
       "metadata": {
         "description": "Specify a project name that is used to generate resource names."
       }
@@ -50,7 +51,7 @@
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2022-09-01",
+      "apiVersion": "2023-01-01",
       "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -94,14 +95,14 @@
         }
       },
       "dependsOn": [
-        "appServicePlan"
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
       ]
     }
   ],
   "outputs": {
     "storageEndpoint": {
       "type": "object",
-      "value": "[reference(variables('storageAccountName')).primaryEndpoints]"
+      "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2023-01-01').primaryEndpoints]"
     }
   }
 }

@@ -4,7 +4,6 @@
   "parameters": {
     "projectName": {
       "type": "string",
-      "defaultValue": "jgao",
       "minLength": 3,
       "maxLength": 11,
       "metadata": {

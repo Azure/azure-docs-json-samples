@@ -40,7 +40,7 @@
           }
         ],
         "scriptContent": "result=$(az keyvault list); echo \"arg1 is: $1\"; echo \"arg2 is: $2\"; echo \"Username is: $UserName\"; echo \"password is: $Password\"; echo $result | jq -c '{Result: map({id: .id})}' > $AZ_SCRIPTS_OUTPUT_PATH",
-        "cleanupPreference": "OnSuccess",
+        "cleanupPreference": "OnExpiration",
         "retentionInterval": "P1D"
       }
     }

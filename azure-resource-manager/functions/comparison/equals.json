@@ -12,11 +12,11 @@
     },
     "firstString": {
       "type": "string",
-      "defaultValue": "a"
+      "defaultValue": "demo"
     },
     "secondString": {
       "type": "string",
-      "defaultValue": "a"
+      "defaultValue": "Demo"
     },
     "firstArray": {
       "type": "array",

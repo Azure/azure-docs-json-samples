@@ -70,7 +70,7 @@ if ($deploy) {
     $newSas = $sasToken.substring(1)
 
     Write-Host "Attempting deployment with following URI: "
-    Write-Host "$templateUri$sasToken" # using original $sasToken since it has the leading '?' for the purpose of emitting a debuggin URL
+    Write-Host "$templateUri$sasToken" # using original $sasToken since it has the leading '?' for the purpose of emitting a debugging URL
 
     New-AzResourceGroupDeployment -ResourceGroupName "jgaots0119rg" -TemplateUri $templateUri -QueryString $newSas -Verbose
   }

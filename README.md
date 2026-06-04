@@ -4,7 +4,7 @@ This repository contains JavaScript Object Notation (JSON) samples that are used
 
 ## Directory structure
 
-The following table describes the repository's contents with links to the directories. The directories have _readme.md_ files with links to articles that use the samples. When practical, direct links are used to a sample's first occurence in an article.
+The following table describes the repository's contents with links to the directories. The directories have _readme.md_ files with links to articles that use the samples. When practical, direct links are used to a sample's first occurrence in an article.
 
 | Directory | Purpose |
 | ---- | ---- |
